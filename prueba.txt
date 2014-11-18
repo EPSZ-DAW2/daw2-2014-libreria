@@ -1,3 +1,8 @@
+<<<<<<< .mine
+<<<<<<< .mine
+Hola!=======
+Prueba Alejandro>>>>>>> .r3
+=======
 Prueba Alejandro
 
 Prueba suleimani
@@ -8,4 +13,4 @@ eeeeeee
 
 
 adssdads
-HOLA
+HOLAadssdads>>>>>>> .r7

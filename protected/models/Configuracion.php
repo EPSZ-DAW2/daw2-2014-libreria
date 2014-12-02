@@ -91,4 +91,62 @@ class Configuracion extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	//-----------------------------------------------------
+	//Establecer una variable de configuración
+	//Uso:
+	// if (Configuracion::establecer( $variable, $valor)) ...;
+	public static function establecer( $variable, $valor)
+	{
+		$modelo= new Configuracion;
+		$modelo->Campo= $variable;
+		$modelo->Valor= $valor;
+		return ($modelo->save() !== false);
+	}
+	
+	//-----------------------------------------------------
+	//Obtener una varible de configuración.
+	//Uso:
+	// $valor= Configuracion::obtener( $variable, $defecto);
+	public static function obtener( $variable, $defecto)
+	{
+		$modelo= Configuracion::model()->findByPk( $variable);
+		if ($modelo === null) {
+			$valor= $defecto;
+			self::establecer( $variable, $defecto);
+		} else {
+			$valor= $modelo->Valor;
+		}
+		return $valor;
+	}
+	
+	//-----------------------------------------------------
+	//Obtener el número de libros por página configurado.
+	//Uso:
+	// $numero= Configuracion::LibrosPagina();
+	public static function LibrosPagina()
+	{
+		return (int)self::obtener( 'LibrosPagina', 25);
+	}
+	
+	//-----------------------------------------------------
+	//Obtener el número de lineas por página configurado.
+	//Uso:
+	// $numero= Configuracion::LineasPagina();
+	public static function LineasPagina()
+	{
+		return (int)self::obtener( 'LineasPagina', 10);
+	}
+	
+	//-----------------------------------------------------
+	//Obtener el tipo de IVA para libros.
+	//Uso:
+	// $numero= Configuracion::IvaLibros();
+	public static function IvaLibros()
+	{
+		return (int)self::obtener( 'IvaLibros', 21);
+	}
+	
+	
+	
 }

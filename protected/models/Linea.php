@@ -50,8 +50,8 @@ class Linea extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idLibro' => array(self::BELONGS_TO, 'Libro', 'IdLibro'),
-			'idPedido' => array(self::BELONGS_TO, 'Pedido', 'IdPedido'),
+			'libro' => array(self::BELONGS_TO, 'Libro', 'IdLibro'),
+			'pedido' => array(self::BELONGS_TO, 'Pedido', 'IdPedido'),
 		);
 	}
 
@@ -65,8 +65,8 @@ class Linea extends CActiveRecord
 			'IdPedido' => 'Id Pedido',
 			'IdLibro' => 'Id Libro',
 			'Cantidad' => 'Cantidad',
-			'Precio' => 'Precio',
-			'Importe' => 'Importe',
+			'Precio' => 'Precio Unitario',
+			'Importe' => 'Importe Total',
 		);
 	}
 

@@ -61,9 +61,9 @@ class Libro extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idEditorial' => array(self::BELONGS_TO, 'Editorial', 'IdEditorial'),
-			'idIdioma' => array(self::BELONGS_TO, 'Idioma', 'IdIdioma'),
-			'autors' => array(self::MANY_MANY, 'Autor', 'libro_autor(IdLibro, IdAutor)'),
+			'editorial' => array(self::BELONGS_TO, 'Editorial', 'IdEditorial'),
+			'idioma' => array(self::BELONGS_TO, 'Idioma', 'IdIdioma'),
+			'autores' => array(self::MANY_MANY, 'Autor', 'libro_autor(IdLibro, IdAutor)'),
 			'categorias' => array(self::MANY_MANY, 'Categoria', 'libro_categoria(IdLibro, IdCategoria)'),
 			'lineas' => array(self::HAS_MANY, 'Linea', 'IdLibro'),
 		);
@@ -76,11 +76,11 @@ class Libro extends CActiveRecord
 	{
 		return array(
 			'IdLibro' => 'Id Libro',
-			'ISBN' => 'Isbn',
+			'ISBN' => 'ISBN',
 			'IdEditorial' => 'Id Editorial',
 			'Titulo' => 'Titulo',
-			'Edicion' => 'Edicion',
-			'Paginas' => 'Paginas',
+			'Edicion' => 'Edición',
+			'Paginas' => 'Nº Paginas',
 			'Formato' => 'Formato',
 			'IdIdioma' => 'Id Idioma',
 			'Resumen' => 'Resumen',

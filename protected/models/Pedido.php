@@ -65,9 +65,9 @@ class Pedido extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'lineas' => array(self::HAS_MANY, 'Linea', 'IdPedido'),
-			'idCliente' => array(self::BELONGS_TO, 'Cliente', 'IdCliente'),
-			'idEstado' => array(self::BELONGS_TO, 'Estado', 'IdEstado'),
-			'idPago' => array(self::BELONGS_TO, 'FormaPago', 'IdPago'),
+			'cliente' => array(self::BELONGS_TO, 'Cliente', 'IdCliente'),
+			'estado' => array(self::BELONGS_TO, 'Estado', 'IdEstado'),
+			'pago' => array(self::BELONGS_TO, 'FormaPago', 'IdPago'),
 		);
 	}
 
@@ -83,15 +83,15 @@ class Pedido extends CActiveRecord
 			'Fecha' => 'Fecha',
 			'IdCliente' => 'Id Cliente',
 			'IdPago' => 'Id Pago',
-			'IVA' => 'Iva',
-			'GastosEnvio' => 'Gastos Envio',
+			'IVA' => 'IVA',
+			'GastosEnvio' => 'Gastos de Envío',
 			'Pagado' => 'Pagado',
 			'IdEstado' => 'Id Estado',
-			'DomicilioEnvio' => 'Domicilio Envio',
-			'CPEnvio' => 'Cpenvio',
-			'PoblacionEnvio' => 'Poblacion Envio',
-			'ProvinciaEnvio' => 'Provincia Envio',
-			'TelefonoEnvio' => 'Telefono Envio',
+			'DomicilioEnvio' => 'Domicilio Envió',
+			'CPEnvio' => 'CP Envío',
+			'PoblacionEnvio' => 'Población Envío',
+			'ProvinciaEnvio' => 'Provincia Envío',
+			'TelefonoEnvio' => 'Teléfono Envío',
 		);
 	}
 

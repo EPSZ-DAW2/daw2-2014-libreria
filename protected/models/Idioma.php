@@ -55,7 +55,7 @@ class Idioma extends CActiveRecord
 	{
 		return array(
 			'IdIdioma' => 'Id Idioma',
-			'Nombre' => 'Nombre',
+			'Nombre' => 'Idioma',
 		);
 	}
 

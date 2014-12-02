@@ -106,4 +106,29 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	/**
+	 * Acción para comprobar la configuración de la aplicación.
+	 */
+	public function actionConfiguracion()
+	{
+		$html= '<h1>Configuración</h1>';
+		$html.= '<br/>';
+		
+		$valor= Configuracion::LineasPagina();
+		$html.= 'LineasPagina= '.var_export( $valor, true);
+		$html.= '<br/>';
+		
+		$valor= Configuracion::LibrosPagina();
+		$html.= 'LibrosPagina= '.var_export( $valor, true);
+		$html.= '<br/>';
+		
+		$valor= Configuracion::IvaLibros();
+		$html.= 'IvaLibros= '.var_export( $valor, true);
+		$html.= '<br/>';
+		
+		//...
+		
+		$this->renderText( $html);
+	}
 }

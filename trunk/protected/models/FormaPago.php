@@ -55,7 +55,7 @@ class FormaPago extends CActiveRecord
 	{
 		return array(
 			'IdPago' => 'Id Pago',
-			'Nombre' => 'Nombre',
+			'Nombre' => 'Tipo de Pago',
 		);
 	}
 

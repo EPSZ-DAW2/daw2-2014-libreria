@@ -57,7 +57,7 @@ class Editorial extends CActiveRecord
 		return array(
 			'IdEditorial' => 'Id Editorial',
 			'Nombre' => 'Nombre',
-			'Web' => 'Web',
+			'Web' => 'Página Web',
 		);
 	}
 

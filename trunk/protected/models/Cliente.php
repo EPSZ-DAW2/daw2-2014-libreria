@@ -51,7 +51,7 @@ class Cliente extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idCliente' => array(self::BELONGS_TO, 'Usuario', 'IdCliente'),
+			'cliente' => array(self::BELONGS_TO, 'Usuario', 'IdCliente'),
 			'pedidos' => array(self::HAS_MANY, 'Pedido', 'IdCliente'),
 		);
 	}
@@ -63,10 +63,10 @@ class Cliente extends CActiveRecord
 	{
 		return array(
 			'IdCliente' => 'Id Cliente',
-			'DomicilioFacturacion' => 'Domicilio Facturacion',
-			'CPFacturacion' => 'Cpfacturacion',
-			'PoblacionFacturacion' => 'Poblacion Facturacion',
-			'ProvinciaFacturacion' => 'Provincia Facturacion',
+			'DomicilioFacturacion' => 'Domicilio Facturación',
+			'CPFacturacion' => 'CP Facturación',
+			'PoblacionFacturacion' => 'Población Facturación',
+			'ProvinciaFacturacion' => 'Provincia Facturación',
 		);
 	}
 

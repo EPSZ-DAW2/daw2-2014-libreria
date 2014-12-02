@@ -56,9 +56,9 @@ class Categoria extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdCategoria' => 'Id Categoria',
+			'IdCategoria' => 'Id Categoría',
 			'Nombre' => 'Nombre',
-			'Descripcion' => 'Descripcion',
+			'Descripcion' => 'Descripción',
 		);
 	}
 

@@ -60,7 +60,7 @@ class Autor extends CActiveRecord
 			'IdAutor' => 'Id Autor',
 			'Nombre' => 'Nombre',
 			'Nacionalidad' => 'Nacionalidad',
-			'Web' => 'Web',
+			'Web' => 'Página Web',
 		);
 	}
 

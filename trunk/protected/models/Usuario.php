@@ -57,7 +57,6 @@ class Usuario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'authitems' => array(self::MANY_MANY, 'Authitem', 'authassignment(userid, itemname)'),
 			'cliente' => array(self::HAS_ONE, 'Cliente', 'IdCliente'),
 		);
 	}
@@ -73,8 +72,8 @@ class Usuario extends CActiveRecord
 			'Password' => 'Password',
 			'Nombre' => 'Nombre',
 			'Apellidos' => 'Apellidos',
-			'NIF' => 'Nif',
-			'Telefono' => 'Telefono',
+			'NIF' => 'NIF',
+			'Telefono' => 'Teléfono',
 			'Bloqueado' => 'Bloqueado',
 			'FechaRegistro' => 'Fecha Registro',
 			'Revisado' => 'Revisado',

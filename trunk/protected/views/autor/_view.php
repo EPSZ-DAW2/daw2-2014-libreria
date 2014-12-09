@@ -1,0 +1,25 @@
+<?php
+/* @var $this AutorController */
+/* @var $data Autor */
+?>
+
+<div class="view">
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('IdAutor')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->IdAutor), array('view', 'id'=>$data->IdAutor)); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
+	<?php echo CHtml::encode($data->Nombre); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Nacionalidad')); ?>:</b>
+	<?php echo CHtml::encode($data->Nacionalidad); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Web')); ?>:</b>
+	<?php echo CHtml::encode($data->Web); ?>
+	<br />
+
+
+</div>

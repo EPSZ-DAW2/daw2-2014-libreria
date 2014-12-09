@@ -1,9 +1,0 @@
-<?php
-//Devolver datos de configuracion personal...
-//Copiar este archivo como "main_personal.php" y adaptarlo a
-//vuestras necesidades para que funcione en "main.php".
-
-return array(
-	'db.username'=>'root',
-	'db.password'=>'root',
-);

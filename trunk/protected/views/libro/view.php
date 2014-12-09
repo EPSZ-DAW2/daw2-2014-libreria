@@ -16,14 +16,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Libro #<?php echo $model->IdLibro; ?></h1>
+<h1>View Libro <?php echo $model->Titulo; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'IdLibro',
 		'ISBN',
-		'IdEditorial',
+		array( 'name'=>'IdEditorial', 'value'=>(($model->editorial !== null) ? $model->editorial->Nombre : '')),
 		'Titulo',
 		'Edicion',
 		'Paginas',

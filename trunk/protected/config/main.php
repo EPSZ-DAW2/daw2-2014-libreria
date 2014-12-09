@@ -8,7 +8,7 @@
 $personal= include('main_personal.php');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Biblioteca Virtual DAW2',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

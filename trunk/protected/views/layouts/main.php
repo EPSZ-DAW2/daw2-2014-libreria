@@ -31,6 +31,9 @@
 			'items'=>array(
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
 				array('label'=>'Libros', 'url'=>array('/libro')),
+				array('label'=>'Autores', 'url'=>array('/autor')),
+				array('label'=>'Editoriales', 'url'=>array('/editorial')),
+				array('label'=>'Clientes', 'url'=>array('/cliente')),
 				array('label'=>'Configuración', 'url'=>array('/site/configuracion')),
 				array('label'=>'Contacto', 'url'=>array('/site/contact')),
 				array('label'=>'Acceder', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

@@ -3,19 +3,19 @@
 /* @var $model Autor */
 
 $this->breadcrumbs=array(
-	'Autors'=>array('index'),
-	$model->IdAutor=>array('view','id'=>$model->IdAutor),
-	'Update',
+	'Autores'=>array('index'),
+	$model->Nombre=>array('view','id'=>$model->IdAutor),
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Autor', 'url'=>array('index')),
-	array('label'=>'Create Autor', 'url'=>array('create')),
-	array('label'=>'View Autor', 'url'=>array('view', 'id'=>$model->IdAutor)),
-	array('label'=>'Manage Autor', 'url'=>array('admin')),
+	array('label'=>'Listar Autores', 'url'=>array('index')),
+	array('label'=>'Crear Autor', 'url'=>array('create')),
+	array('label'=>'Ver Autor', 'url'=>array('view', 'id'=>$model->IdAutor)),
+	array('label'=>'Gestionar Autor', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Autor <?php echo $model->IdAutor; ?></h1>
+<h1>Actualizar Autor: <?php echo $model->Nombre; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

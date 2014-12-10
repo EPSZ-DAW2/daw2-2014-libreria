@@ -3,16 +3,16 @@
 /* @var $model Autor */
 
 $this->breadcrumbs=array(
-	'Autors'=>array('index'),
-	'Create',
+	'Autores'=>array('index'),
+	'Crear',
 );
 
 $this->menu=array(
-	array('label'=>'List Autor', 'url'=>array('index')),
-	array('label'=>'Manage Autor', 'url'=>array('admin')),
+	array('label'=>'Listar Autores', 'url'=>array('index')),
+	array('label'=>'Gestionar Autores', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Autor</h1>
+<h1>Crear Autor</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

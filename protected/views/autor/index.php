@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Autors',
+	'Autores',
 );
 
 $this->menu=array(
-	array('label'=>'Create Autor', 'url'=>array('create')),
-	array('label'=>'Manage Autor', 'url'=>array('admin')),
+	array('label'=>'Crear Autor', 'url'=>array('create')),
+	array('label'=>'Gestionar Autores', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Autors</h1>
+<h1>Autores</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -3,25 +3,24 @@
 /* @var $model Autor */
 
 $this->breadcrumbs=array(
-	'Autors'=>array('index'),
-	$model->IdAutor,
+	'Autores'=>array('index'),
+	$model->Nombre,
 );
 
 $this->menu=array(
-	array('label'=>'List Autor', 'url'=>array('index')),
-	array('label'=>'Create Autor', 'url'=>array('create')),
-	array('label'=>'Update Autor', 'url'=>array('update', 'id'=>$model->IdAutor)),
-	array('label'=>'Delete Autor', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdAutor),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Autor', 'url'=>array('admin')),
+	array('label'=>'Listar Autores', 'url'=>array('index')),
+	array('label'=>'Crear Autor', 'url'=>array('create')),
+	array('label'=>'Actualizar Autor', 'url'=>array('update', 'id'=>$model->IdAutor)),
+	array('label'=>'Borrar Autor', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdAutor),'confirm'=>'¿Estás seguro de que desea borrar este autor?')),
+	array('label'=>'Gestionar Autores', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Autor #<?php echo $model->IdAutor; ?></h1>
+<h1>Autor: <?php echo $model->Nombre; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'IdAutor',
 		'Nombre',
 		'Nacionalidad',
 		'Web',

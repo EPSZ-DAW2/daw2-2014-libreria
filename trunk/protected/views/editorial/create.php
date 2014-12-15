@@ -3,16 +3,16 @@
 /* @var $model Editorial */
 
 $this->breadcrumbs=array(
-	'Editorials'=>array('index'),
-	'Create',
+	'Editoriales'=>array('index'),
+	'Crear',
 );
 
 $this->menu=array(
-	array('label'=>'List Editorial', 'url'=>array('index')),
-	array('label'=>'Manage Editorial', 'url'=>array('admin')),
+	array('label'=>'Listar Editorial', 'url'=>array('index')),
+	array('label'=>'Gestionar Editorial', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Editorial</h1>
+<h1>Crear Editorial</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

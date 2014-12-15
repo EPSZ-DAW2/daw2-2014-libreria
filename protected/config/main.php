@@ -9,7 +9,7 @@ $personal= include('main_personal.php');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Biblioteca Virtual DAW2',
-	'language' => 'es';
+	'language' => 'es',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

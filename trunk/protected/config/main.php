@@ -9,7 +9,8 @@ $personal= include('main_personal.php');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Biblioteca Virtual DAW2',
-	'language' => 'es',
+	'language'=>'es',
+	'sourceLanguage'=>'es',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -47,9 +48,6 @@ return array(
 		),
 		*/
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=libreria',
 			'emulatePrepare' => true,
 			'username' => $personal['db.username'],
@@ -74,6 +72,12 @@ return array(
 				),
 				*/
 			),
+		),
+		'authManager'=>array(
+			'class'=>'CDbAuthManager',
+			'itemTable'=>'authitem',
+			'itemChildTable'=>'authitemchild',
+			'assignmentTable'=>'authassignment',
 		),
 	),
 

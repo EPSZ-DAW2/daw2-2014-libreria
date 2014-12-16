@@ -131,4 +131,74 @@ class SiteController extends Controller
 		
 		$this->renderText( $html);
 	}
+	
+	/**
+	 * Acción para comprobar la configuración de la aplicación.
+	 */
+	public function actionCrearRoles()
+	{
+		$html= '<h1>Crear Roles de Aplicación y Usuarios de Prueba</h1>';
+		$html.= '<br/>';
+		
+		$manager= Yii::app()->authManager;
+		
+		//Borrar todos los datos de autorizaciones existentes.
+		$manager->clearAll();
+		//Borrar todos los datos de usuarios de prueba.
+		Usuario::model()->deleteAll();
+		
+		//Crear los ROLES fijados en el diseño...
+		$roles= array(
+			'sysadmin',
+			'admin',
+			'cliente',
+			'vendedor',
+			'libreria',
+			'gerente',
+		);
+		foreach( $roles as $i => $rol) {
+			$manager->createRole( $rol);
+			
+			$usuario= new Usuario;
+			//--$usuario->IdUsuario= ...;
+			$usuario->Email= $rol;
+			$usuario->Password= $rol;
+			$usuario->Nombre= 'Usuario de Prueba "'.$rol.'"';
+			$usuario->Apellidos= 'Apellidos de "'.$rol.'"';
+			$usuario->NIF= sprintf( '1234%05d',$i);
+			$usuario->Telefono= 123456789;
+			$usuario->Bloqueado= 0;
+			$usuario->FechaRegistro= date('Y-m-d H:i:s');
+			$usuario->Revisado= 1;
+			if ($usuario->save()) {
+				$manager->assign( $rol,$usuario->IdUsuario);
+			} else {
+				$html.= 'Error al guardar usuario "'.$rol.'":'.'<br/>';
+				$html.= print_r( $usuario->getErrors(), true).'<br/>';
+			}
+		}
+		
+		//Comprobar que se ha guardado bien...
+		$html.= 'Roles Existentes:'.'<br/>';
+		$lista= $manager->getRoles();
+		foreach( $lista as $rol) {
+			$html.= ' - '.$rol->name.'<br/>';
+		}
+		$html.= '<hr/>';
+		
+		$html.= 'Usuarios Existentes:'.'<br/>';
+		$usuarios= Usuario::model()->findAll();
+		foreach( $usuarios as $usuario) {
+			$html.= '* Usuario: '.$usuario->Nombre.'<br/>';
+			$lista= $manager->getRoles( $usuario->IdUsuario);
+			foreach( $lista as $rol) {
+				$html.= ' - '.$rol->name.'<br/>';
+			}
+		}
+		$html.= '<hr/>';
+		
+		//...
+		
+		$this->renderText( $html);
+	}
 }

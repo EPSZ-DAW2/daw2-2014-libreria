@@ -65,7 +65,7 @@ array('label'=>'Administrar', 'url'=>array('/admin'), 'visible'=>
 
 </div><!-- page -->
 <?php
-	print_r( $_SESSION);
+	//print_r( $_SESSION);
 ?>
 </body>
 </html>

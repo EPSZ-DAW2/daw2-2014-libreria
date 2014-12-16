@@ -14,7 +14,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('IdNacionalidad')); ?>:</b>
-	<?php echo CHtml::encode($data->IdNacionalidad); ?>
+	<?php echo CHtml::encode($data->nacionalidad->NombreNacionalidad); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Web')); ?>:</b>

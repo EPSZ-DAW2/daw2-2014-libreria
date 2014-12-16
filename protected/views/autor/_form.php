@@ -26,9 +26,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Nacionalidad'); ?>
-		<?php echo $form->textField($model,'Nacionalidad',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'Nacionalidad'); ?>
+		<?php echo $form->labelEx($model,'IdNacionalidad'); ?>
+		<?php echo $form->textField($model,'IdNacionalidad',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->error($model,'IdNacionalidad'); ?>
 	</div>
 
 	<div class="row">

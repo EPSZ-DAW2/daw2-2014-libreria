@@ -42,7 +42,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'IdAutor',
 		'Nombre',
-		'Nacionalidad',
+		'IdNacionalidad',
 		'Web',
 		array(
 			'class'=>'CButtonColumn',

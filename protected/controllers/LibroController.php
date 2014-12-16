@@ -32,7 +32,7 @@ class LibroController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','imagen'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -170,4 +170,29 @@ class LibroController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	public function actionImagen()
+        {
+            $model = new ImagenForm();
+             if(isset($_POST['ImagenForm']))
+            {                
+                if(isset($_FILES) and $_FILES['ImagenForm']['error']['foto']==0)
+                 {
+                    $uf = CUploadedFile::getInstance($model, 'foto');
+                    if($uf->getExtensionName() == "jpg" || $uf->getExtensionName() == "png" ||
+                        $uf->getExtensionName() == "jpeg" || $uf->getExtensionName()== "gif")
+                    {
+                          $uf->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$uf->getName());
+                        
+                          Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$uf->getName()." Subida Correctamente");
+                          Yii::app()->user->setFlash('imagen','/images/'.$uf->getName());
+                          $this->refresh();
+                    }else{
+                        Yii::app()->user->setFlash('error_imagen','Imagen no valida');
+                    }
+                    
+                 }
+            }
+            $this->render('imagen',array('model'=>$model));
+        }
 }

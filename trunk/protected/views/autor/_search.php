@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Nacionalidad'); ?>
-		<?php echo $form->textField($model,'Nacionalidad',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->label($model,'IdNacionalidad'); ?>
+		<?php echo $form->textField($model,'IdNacionalidad',array('size'=>30,'maxlength'=>30)); ?>
 	</div>
 
 	<div class="row">

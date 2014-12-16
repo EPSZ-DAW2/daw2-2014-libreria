@@ -13,8 +13,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->Nombre), array('view', 'id'=>$data->IdAutor)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Nacionalidad')); ?>:</b>
-	<?php echo CHtml::encode($data->Nacionalidad); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('IdNacionalidad')); ?>:</b>
+	<?php echo CHtml::encode($data->IdNacionalidad); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Web')); ?>:</b>

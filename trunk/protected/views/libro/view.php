@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Libros'=>array('index'),
-	$model->IdLibro,
+	$model->Titulo,
 );
 
 $this->menu=array(
@@ -16,7 +16,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Libro <?php echo $model->Titulo; ?></h1>
+<h1><?php echo $model->Titulo; ?></h1>
+
+<img src="<?php echo Yii:: app() ->baseUrl.'/images/portadas/'.$model->IdLibro.'.png' ?>">
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

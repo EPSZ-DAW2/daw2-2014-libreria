@@ -1,26 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "autor".
+ * This is the model class for table "nacionalidad".
  *
- * The followings are the available columns in table 'autor':
- * @property integer $IdAutor
- * @property string $Nombre
+ * The followings are the available columns in table 'nacionalidad':
  * @property integer $IdNacionalidad
- * @property string $Web
+ * @property string $NombreNacionalidad
  *
  * The followings are the available model relations:
- * @property Nacionalidad $idNacionalidad
- * @property Libro[] $libros
+ * @property Autor[] $autors
  */
-class Autor extends CActiveRecord
+class Nacionalidad extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'autor';
+		return 'nacionalidad';
 	}
 
 	/**
@@ -31,12 +28,11 @@ class Autor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Nombre, IdNacionalidad', 'required'),
-			array('IdNacionalidad', 'numerical', 'integerOnly'=>true),
-			array('Nombre, Web', 'length', 'max'=>100),
+			array('NombreNacionalidad', 'required'),
+			array('NombreNacionalidad', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdAutor, Nombre, IdNacionalidad, Web', 'safe', 'on'=>'search'),
+			array('IdNacionalidad, NombreNacionalidad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,8 +44,7 @@ class Autor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idNacionalidad' => array(self::BELONGS_TO, 'Nacionalidad', 'IdNacionalidad'),
-			'libros' => array(self::MANY_MANY, 'Libro', 'libro_autor(IdAutor, IdLibro)'),
+			'autors' => array(self::HAS_MANY, 'Autor', 'IdNacionalidad'),
 		);
 	}
 
@@ -59,10 +54,8 @@ class Autor extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdAutor' => 'Id Autor',
-			'Nombre' => 'Nombre',
-			'IdNacionalidad' => 'Nacionalidad',
-			'Web' => 'Página Web',
+			'IdNacionalidad' => 'Id Nacionalidad',
+			'NombreNacionalidad' => 'Nombre Nacionalidad',
 		);
 	}
 
@@ -84,10 +77,8 @@ class Autor extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdAutor',$this->IdAutor);
-		$criteria->compare('Nombre',$this->Nombre,true);
 		$criteria->compare('IdNacionalidad',$this->IdNacionalidad);
-		$criteria->compare('Web',$this->Web,true);
+		$criteria->compare('NombreNacionalidad',$this->NombreNacionalidad,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -98,7 +89,7 @@ class Autor extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Autor the static model class
+	 * @return Nacionalidad the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

@@ -17,7 +17,7 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
+		/*$users=array(
 			// username => password
 			'demo'=>'demo',
 			'admin'=>'admin',
@@ -28,6 +28,33 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
+		*/
+		$usuario= Usuario::model()->findByAttributes( array(
+			'Email'=>$this->username,
+			'Password'=>$this->password,
+		));
+		if ($usuario === null) {
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		} else {
+			$this->errorCode=self::ERROR_NONE;
+			$this->_id= $usuario->IdUsuario;
+			$this->_nombre= $usuario->Nombre;
+		}
 		return !$this->errorCode;
 	}
+	
+	
+	private $_id= null;
+	private $_nombre= null;
+	//Devolver el ID del usuario activo
+	public function getId()
+	{
+		return $this->_id;
+	}
+
+	//Devolver el Nombre del usuario activo
+	public function getName()
+	{
+		return $this->_nombre;
+	}	
 }

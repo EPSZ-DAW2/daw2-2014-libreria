@@ -40,6 +40,10 @@
 				array('label'=>'Registrarse', 'url'=>array('/site/registro'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Desconectar ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
+array('label'=>'Administrar', 'url'=>array('/admin'), 'visible'=>
+	Yii::app()->user->checkAccess( 'sysadmin')
+	|| Yii::app()->user->checkAccess( 'admin')
+),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
@@ -60,6 +64,8 @@
 	</div><!-- footer -->
 
 </div><!-- page -->
-
+<?php
+	print_r( $_SESSION);
+?>
 </body>
 </html>

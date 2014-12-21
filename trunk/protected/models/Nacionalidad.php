@@ -55,7 +55,7 @@ class Nacionalidad extends CActiveRecord
 	{
 		return array(
 			'IdNacionalidad' => 'Id Nacionalidad',
-			'NombreNacionalidad' => 'Nombre Nacionalidad',
+			'NombreNacionalidad' => 'Nacionalidad',
 		);
 	}
 

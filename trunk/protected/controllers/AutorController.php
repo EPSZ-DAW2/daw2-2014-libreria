@@ -29,18 +29,18 @@ class AutorController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'roles'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'roles'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
-				'users'=>array('*'),
+				'roles'=>array('*'),
 			),
 		);
 	}
@@ -51,8 +51,25 @@ class AutorController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$autor = $this->loadModel($id);
+		$dataProvider=new CArrayDataProvider(
+			$autor->libros,
+			array(
+				'keyField'=>'IdLibro',
+				'sort'=>array(
+					'attributes'=>array(
+						'Titulo',
+						'editorial.Nombre',
+					)
+				),
+				'pagination'=> array(
+					'pageSize' => 2,
+				)
+			)
+		);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$autor,
+			'dataProvider' => $dataProvider,
 		));
 	}
 

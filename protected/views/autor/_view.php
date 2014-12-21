@@ -17,9 +17,11 @@
 	<?php echo CHtml::encode($data->nacionalidad->NombreNacionalidad); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Web')); ?>:</b>
-	<?php echo CHtml::encode($data->Web); ?>
-	<br />
+	<?php if($data->Web!==NULL) : ?>
+		<b><?php echo CHtml::encode($data->getAttributeLabel('Web')); ?>:</b>
+		<?php echo CHtml::link($data->Web,$data->Web); ?>
+		<br />
+	<?php endif;?>
 
 
 </div>

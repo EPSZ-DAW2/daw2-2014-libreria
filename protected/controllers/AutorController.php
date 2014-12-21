@@ -111,6 +111,8 @@ class AutorController extends Controller
 		if(isset($_POST['Autor']))
 		{
 			$model->attributes=$_POST['Autor'];
+			if($model->Web == '')
+				$model->Web = NULL;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->IdAutor));
 		}
@@ -150,7 +152,7 @@ class AutorController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Autor('search');
+		$model = new Autor('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Autor']))
 			$model->attributes=$_GET['Autor'];

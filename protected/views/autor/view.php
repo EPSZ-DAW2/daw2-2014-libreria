@@ -22,7 +22,12 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'Nombre',
-		'IdNacionalidad',
+		'nacionalidad.NombreNacionalidad',
 		'Web',
 	),
+)); ?>
+
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=> $dataProvider,
+	'itemView'=>'_libro',
 )); ?>

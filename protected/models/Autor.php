@@ -33,6 +33,7 @@ class Autor extends CActiveRecord
 		return array(
 			array('Nombre, IdNacionalidad', 'required'),
 			array('IdNacionalidad', 'numerical', 'integerOnly'=>true),
+			array('IdNacionalidad', 'exist', 'className' => 'Nacionalidad'),
 			array('Nombre, Web', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

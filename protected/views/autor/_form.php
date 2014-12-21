@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'IdNacionalidad'); ?>
-		<?php echo $form->textField($model,'IdNacionalidad',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->dropDownList($model,'IdNacionalidad',CHtml::listData(Nacionalidad::model()->findAll(array('order' => 'NombreNacionalidad')),'IdNacionalidad','NombreNacionalidad'), array('prompt' => 'Seleccione una Nacionalidad')); ?>
 		<?php echo $form->error($model,'IdNacionalidad'); ?>
 	</div>
 

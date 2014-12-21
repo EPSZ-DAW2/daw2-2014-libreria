@@ -77,10 +77,10 @@ class Libro extends CActiveRecord
 		return array(
 			'IdLibro' => 'Id Libro',
 			'ISBN' => 'ISBN',
-			'IdEditorial' => 'Id Editorial',
-			'Titulo' => 'Titulo',
+			'IdEditorial' => 'Editorial',
+			'Titulo' => 'Título',
 			'Edicion' => 'Edición',
-			'Paginas' => 'Nº Paginas',
+			'Paginas' => 'Nº Páginas',
 			'Formato' => 'Formato',
 			'IdIdioma' => 'Id Idioma',
 			'Resumen' => 'Resumen',

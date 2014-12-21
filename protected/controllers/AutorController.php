@@ -87,6 +87,8 @@ class AutorController extends Controller
 		if(isset($_POST['Autor']))
 		{
 			$model->attributes=$_POST['Autor'];
+			if($model->Web == '')
+				$model->Web = NULL;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->IdAutor));
 		}

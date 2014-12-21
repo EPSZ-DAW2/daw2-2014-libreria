@@ -34,6 +34,7 @@ class Editorial extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('IdEditorial, Nombre, Web', 'safe', 'on'=>'search'),
+			array('Web', 'url'),
 		);
 	}
 

@@ -17,17 +17,15 @@
 
 	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
 
-	<?php echo $form->errorSummary($model); ?>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'Nombre'); ?>
-		<?php echo $form->textField($model,'Nombre',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'Nombre',array('size'=>60,'maxlength'=>100, 'placeholder'=>'Donostiarra')); ?>
 		<?php echo $form->error($model,'Nombre'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Web'); ?>
-		<?php echo $form->textField($model,'Web',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'Web',array('size'=>60,'maxlength'=>100,'placeholder'=>'http://www.nombredelaweb.com')); ?>
 		<?php echo $form->error($model,'Web'); ?>
 	</div>
 

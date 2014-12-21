@@ -29,18 +29,18 @@ class EditorialController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'roles'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'roles'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'roles'=>array('admin'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array('deny',  // deny all roles
+				'roles'=>array('*'),
 			),
 		);
 	}
@@ -51,8 +51,25 @@ class EditorialController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$editorial = $this->loadModel($id);
+		$dataProvider=new CArrayDataProvider(
+			$editorial->libros,
+			array(
+				'keyField'=>'IdLibro',
+				'sort'=>array(
+					'attributes'=>array(
+						'Titulo',
+						'editorial.Nombre',
+					)
+				),
+				'pagination'=> array(
+					'pageSize' => 2,
+				)
+			)
+		);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model' => $editorial,
+			'dataProvider' => $dataProvider,
 		));
 	}
 
@@ -70,6 +87,8 @@ class EditorialController extends Controller
 		if(isset($_POST['Editorial']))
 		{
 			$model->attributes=$_POST['Editorial'];
+			if($model->Web == '')
+				$model->Web = NULL;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->IdEditorial));
 		}
@@ -94,6 +113,8 @@ class EditorialController extends Controller
 		if(isset($_POST['Editorial']))
 		{
 			$model->attributes=$_POST['Editorial'];
+			if($model->Web == '')
+				$model->Web = NULL;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->IdEditorial));
 		}

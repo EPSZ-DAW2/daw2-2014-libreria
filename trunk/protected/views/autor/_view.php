@@ -5,10 +5,6 @@
 
 <div class="view">
 
-	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('IdAutor')); ?>:</b>
-	<?php echo CHtml::encode($data->IdAutor); ?>
-	<br />-->
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->Nombre), array('view', 'id'=>$data->IdAutor)); ?>
 	<br />

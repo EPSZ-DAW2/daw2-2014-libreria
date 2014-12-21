@@ -21,8 +21,18 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'IdEditorial',
 		'Nombre',
-		'Web',
+		array(
+			'label'=>$model->getAttributeLabel('Web'),
+			'type'=>'html',
+			'value'=>$model->Web===NULL ? 'Sin página web' : CHtml::link($model->Web,$model->Web),
+		),
 	),
+)); ?>
+<h2 style="margin:0.5em 0;">Libros de la Editorial</h2>
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=> $dataProvider,
+	'itemView'=>'_libro',
+	'emptyText'=>'No existen libros de este editorial',
+	'template'=>"{sorter}\n{items}\n<div style='float:left;'>{summary}</div>\n{pager}",
 )); ?>

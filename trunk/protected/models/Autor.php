@@ -37,7 +37,8 @@ class Autor extends CActiveRecord
 			array('Nombre, Web', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdAutor, Nombre, IdNacionalidad, Web', 'safe', 'on'=>'search'),
+			array('Nombre, IdNacionalidad, Web', 'safe', 'on'=>'search'),
+			array('Web', 'url'),
 		);
 	}
 
@@ -61,7 +62,7 @@ class Autor extends CActiveRecord
 	{
 		return array(
 			'IdAutor' => 'Id Autor',
-			'Nombre' => 'Nombre',
+			'Nombre' => 'Nombre Completo',
 			'IdNacionalidad' => 'Nacionalidad',
 			'Web' => 'Página Web',
 		);
@@ -84,14 +85,24 @@ class Autor extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('IdAutor',$this->IdAutor);
+		$criteria->group = 'Nombre';
+		$criteria->select = 't.Nombre, t.Web, nacionalidad.IdNacionalidad';
+		$criteria->join = ' LEFT JOIN `nacionalidad` ON t.IdNacionalidad = nacionalidad.IdNacionalidad';
 		$criteria->compare('Nombre',$this->Nombre,true);
 		$criteria->compare('IdNacionalidad',$this->IdNacionalidad);
 		$criteria->compare('Web',$this->Web,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'IdNacionalidad'=>array(
+						'asc'=>'nacionalidad.NombreNacionalidad',
+						'desc'=>'nacionalidad.NombreNacionalidad DESC'
+					),
+					'*',
+				)
+			)
 		));
 	}
 

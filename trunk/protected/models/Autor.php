@@ -89,7 +89,7 @@ class Autor extends CActiveRecord
 		$criteria->select = 't.Nombre, t.Web, nacionalidad.IdNacionalidad';
 		$criteria->join = ' LEFT JOIN `nacionalidad` ON t.IdNacionalidad = nacionalidad.IdNacionalidad';
 		$criteria->compare('Nombre',$this->Nombre,true);
-		$criteria->compare('IdNacionalidad',$this->IdNacionalidad);
+		$criteria->compare('t.IdNacionalidad',$this->IdNacionalidad);
 		$criteria->compare('Web',$this->Web,true);
 
 		return new CActiveDataProvider($this, array(

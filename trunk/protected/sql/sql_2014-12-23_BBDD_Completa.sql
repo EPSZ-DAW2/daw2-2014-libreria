@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2014 a las 13:03:05
+-- Tiempo de generación: 23-12-2014 a las 19:25:17
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -43,12 +43,12 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 --
 
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
-('admin', 2, NULL, 'N;'),
-('cliente', 3, NULL, 'N;'),
-('gerente', 6, NULL, 'N;'),
-('libreria', 5, NULL, 'N;'),
-('sysadmin', 1, NULL, 'N;'),
-('vendedor', 4, NULL, 'N;');
+('admin', 8, NULL, 'N;'),
+('cliente', 9, NULL, 'N;'),
+('gerente', 12, NULL, 'N;'),
+('libreria', 11, NULL, 'N;'),
+('sysadmin', 7, NULL, 'N;'),
+('vendedor', 10, NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -112,13 +112,11 @@ CREATE TABLE IF NOT EXISTS `autor` (
 INSERT INTO `autor` (`IdAutor`, `Nombre`, `IdNacionalidad`, `Web`) VALUES
 (1, 'John Ronald Reuel Tolkien', 10, NULL),
 (2, 'Eme-Agra Fagúndez', 2, NULL),
-(3, 'Ana María Matute', 2, 'www.clubcultura.com/clubliteratura/clubescritores/matute'),
+(3, 'Ana María Matute', 2, 'http://www.clubcultura.com/clubliteratura/clubescritores/matute'),
 (4, 'Gabriel Garcia Marquez', 14, NULL),
 (5, 'Ramón Ybarra Rubio', 2, NULL),
-(6, 'Emma Heyderman', 10, NULL),
-(7, 'Peter May', 10, NULL),
 (8, 'Patrick Rothfuss', 9, NULL),
-(9, 'Dan Brown', 9, NULL);
+(9, 'Dan Brown', 9, 'http://www.danbrown.com/');
 
 -- --------------------------------------------------------
 
@@ -147,6 +145,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `ProvinciaFacturacion` varchar(40) NOT NULL,
   PRIMARY KEY (`IdCliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`IdCliente`, `DomicilioFacturacion`, `CPFacturacion`, `PoblacionFacturacion`, `ProvinciaFacturacion`) VALUES
+(7, 'C/Prueba, Nº1, 1ºB', 49021, 'Zamora', 'Zamora'),
+(8, 'C/Domicilio, Nº2, 2ºC', 37005, 'Salamanca', 'Salamanca');
 
 -- --------------------------------------------------------
 
@@ -187,11 +193,11 @@ CREATE TABLE IF NOT EXISTS `editorial` (
 --
 
 INSERT INTO `editorial` (`IdEditorial`, `Nombre`, `Web`) VALUES
-(1, 'PLAZA & JANES EDITORES', 'www.megustaleer.com/sello/PJ/plaza-janes'),
-(2, 'PLANETA', 'www.planetadelibros.com/editorial-editorial-planeta-8.html'),
-(3, 'MINOTAURO', 'www.planetadelibros.com/seleccion-editorial-comunidad-fantasy-56.html'),
-(4, 'BURLINGTON BOOKS', 'www.burlingtonbooks.com/Spain'),
-(5, 'CAMBRIDGE UNIVERSITY PRESS', 'www.cambridge.org');
+(1, 'PLAZA & JANES EDITORES', 'http://www.megustaleer.com/sello/PJ/plaza-janes'),
+(2, 'PLANETA', 'http://www.planetadelibros.com/editorial-editorial-planeta-8.html'),
+(3, 'MINOTAURO', 'http://www.planetadelibros.com/seleccion-editorial-comunidad-fantasy-56.html'),
+(4, 'BURLINGTON BOOKS', 'http://www.burlingtonbooks.com/Spain'),
+(5, 'CAMBRIDGE UNIVERSITY PRESS', 'http://www.cambridge.org');
 
 -- --------------------------------------------------------
 
@@ -417,19 +423,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `Revisado` int(11) NOT NULL,
   PRIMARY KEY (`IdUsuario`),
   UNIQUE KEY `NIF_UNIQUE` (`NIF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`IdUsuario`, `Email`, `Password`, `Nombre`, `Apellidos`, `NIF`, `Telefono`, `Bloqueado`, `FechaRegistro`, `Revisado`) VALUES
-(1, 'sysadmin', 'sysadmin', 'Usuario de Prueba "sysadmin"', 'Apellidos de "sysadmin"', '123400000', 123456789, 0, '2014-12-21 11:53:27', 1),
-(2, 'admin', 'admin', 'Usuario de Prueba "admin"', 'Apellidos de "admin"', '123400001', 123456789, 0, '2014-12-21 11:53:27', 1),
-(3, 'cliente', 'cliente', 'Usuario de Prueba "cliente"', 'Apellidos de "cliente"', '123400002', 123456789, 0, '2014-12-21 11:53:27', 1),
-(4, 'vendedor', 'vendedor', 'Usuario de Prueba "vendedor"', 'Apellidos de "vendedor"', '123400003', 123456789, 0, '2014-12-21 11:53:27', 1),
-(5, 'libreria', 'libreria', 'Usuario de Prueba "libreria"', 'Apellidos de "libreria"', '123400004', 123456789, 0, '2014-12-21 11:53:27', 1),
-(6, 'gerente', 'gerente', 'Usuario de Prueba "gerente"', 'Apellidos de "gerente"', '123400005', 123456789, 0, '2014-12-21 11:53:27', 1);
+(7, 'sysadmin', 'sysadmin', 'Usuario de Prueba "sysadmin"', 'Apellidos de "sysadmin"', '123400000', 123456789, 0, '2014-12-23 17:12:16', 1),
+(8, 'admin', 'admin', 'Usuario de Prueba "admin"', 'Apellidos de "admin"', '123400001', 123456789, 0, '2014-12-23 17:12:16', 1),
+(9, 'cliente', 'cliente', 'Usuario de Prueba "cliente"', 'Apellidos de "cliente"', '123400002', 123456789, 0, '2014-12-23 17:12:16', 1),
+(10, 'vendedor', 'vendedor', 'Usuario de Prueba "vendedor"', 'Apellidos de "vendedor"', '123400003', 123456789, 0, '2014-12-23 17:12:16', 1),
+(11, 'libreria', 'libreria', 'Usuario de Prueba "libreria"', 'Apellidos de "libreria"', '123400004', 123456789, 0, '2014-12-23 17:12:16', 1),
+(12, 'gerente', 'gerente', 'Usuario de Prueba "gerente"', 'Apellidos de "gerente"', '123400005', 123456789, 0, '2014-12-23 17:12:16', 1);
 
 --
 -- Restricciones para tablas volcadas

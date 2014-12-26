@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Clientes'=>array('index'),
-	$model->cliente->Nombre.' '.$model->cliente->Apellidos,
+	$model->IdCliente,
 );
 
 $this->menu=array(
@@ -16,26 +16,15 @@ $this->menu=array(
 );
 ?>
 
-<h1>Cliente: <?php echo $model->cliente->Nombre.' '.$model->cliente->Apellidos; ?></h1>
+<h1>Cliente <?php echo $model->IdCliente; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'cliente.Nombre',
-		'cliente.Apellidos',
-		'cliente.NIF',
-		'cliente.Telefono',
+		'IdCliente',
 		'DomicilioFacturacion',
 		'CPFacturacion',
 		'PoblacionFacturacion',
 		'ProvinciaFacturacion',
-		array(
-				'label'=>$model->cliente->getAttributeLabel('Bloqueado'),
-				'value'=>$model->cliente->Bloqueado==0 ? 'NO' : 'SI',
-			),
-		array(
-				'label'=>$model->cliente->getAttributeLabel('Revisado'),
-				'value'=>$model->cliente->Revisado==0 ? 'NO' : 'SI',
-			),
 	),
 )); ?>

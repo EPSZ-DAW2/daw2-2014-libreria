@@ -4,22 +4,24 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	background: #202020;
 }
 
 #page
 {
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-bottom: 5px;
-	background: white;
-	border: 1px solid #C9E0ED;
+	background: #F0F0F0;
+	border: 1px solid #333333;
+	border-bottom-right-radius:5px; 
+	border-bottom-left-radius:5px; 
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-top: 3px solid #333333;
 }
 
 #content
@@ -34,11 +36,13 @@ body
 
 #footer
 {
+	background-image:url(fondopie.png);
+	background-repeat:repeat-x;
 	padding: 10px;
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #333333;
 }
 
 #logo
@@ -47,37 +51,184 @@ body
 	font-size: 200%;
 }
 
+/*Menu principal*/
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background-image:url(logo_1.png), url(fondo.png);
+    background-position:left, right;
+	background-color:#F0F0F0;
+	background-repeat: no-repeat, repeat-x;
+	height:100px;
 }
 
 #mainmenu ul
 {
-	padding:6px 20px 5px 20px;
-	margin:0px;
+	padding:10px 0px 0px 0px;
+	margin-left:120px;
+	list-style: none; 
+	position: relative;
+	height: 32px;
 }
 
 #mainmenu ul li
 {
-	display: inline;
+	display: block; 
+	height: 26px; 
+	float: left; 
+	overflow: visible;
+	font-size:20px;
+	font-weight:bold;
 }
 
 #mainmenu ul li a
 {
-	color:#ffffff;
+	color:#F0F0F0;
+	background-color:transparent;
+	font-size:20px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 15px;
+	float: left; 
+	display: block;
+}
+
+#mainmenu ul li ul li a
+{
+	color:#F0F0F0;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
 	padding:5px 8px;
+	float: left; 
+	display: block;
 }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	color: #F0F0F0;
 	text-decoration:none;
+	background-color:#B81D18;
+	border-top-right-radius:5px; 
+	border-top-left-radius:5px; 
+}
+
+#mainmenu ul li:hover > ul 
+{ 
+	display: block; 
+}
+
+#mainmenu ul li ul 
+{ 
+	display: none; 
+	position: absolute; 
+	top: 100%; 
+	background: linear-gradient(#b91817, #981914);
+	border-bottom-right-radius:5px; 
+	border-bottom-left-radius:5px; 
+	color: #fff; 
+	height: auto; 
+	width: auto; 
+	margin-left:0px;
+	box-shadow: 0px 5px 5px #333333;
+}
+
+#mainmenu ul li ul li a 
+{ 
+	color: #fff; 
+	padding: 4px 14px; 
+	display: block; 
+	width: auto;
+}
+
+#mainmenu ul li ul li.active a, #mainmenu ul li ul li a:hover 
+{ 
+	color: white; 
+}
+
+#mainmenu ul li ul li 
+{ 
+	clear: left;
+}
+
+/*Menu Superior Derecho*/
+#mainmenu2
+{
+	background-color:#F0F0F0;
+	height:50px;
+	float:right;
+}
+
+#mainmenu2 ul
+{
+	padding:10px 0px 0px 0px;
+	margin-left:100px;
+	list-style: none; 
+	position: relative;
+	height: 26px;
+	margin: 0 0 0 0;
+}
+
+#mainmenu2 ul li
+{
+	display: block; 
+	float: right; 
+	overflow: visible;
+	vertical-align:middle;
+}
+
+#mainmenu2 ul li a
+{
+	color:#202020;
+	background-color:transparent;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 8px;
+	float: right; 
+	display: block;
+}
+
+/*Menu superior izquierdo (Log-In)*/
+#mainmenu3
+{
+	background-image:url(logo_2.png);
+	background-color:#F0F0F0;
+	margin-left:5px;
+	height:50px;
+	float:left;
+	background-repeat: no-repeat;
+}
+#mainmenu3 ul
+{
+	padding:10px 0px 0px 110px;
+	margin-left:100px;
+	list-style: none; 
+	position: relative;
+	height: 26px;
+	margin: 0 0 0 0;
+}
+
+#mainmenu3 ul li
+{
+	display: block; 
+	float: left; 
+	overflow: visible;
+	vertical-align:middle;
+}
+#mainmenu3 ul li a
+{
+	color:#202020;
+	background-color:transparent;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 8px;
+	float: left; 
+}
+
+#clear{
+	clear:both;
 }
 
 div.flash-error, div.flash-notice, div.flash-success
@@ -132,13 +283,13 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #671414;
 }
 
 div.breadcrumbs
 {
 	font-size: 0.9em;
-	padding: 5px 20px;
+	padding: 25px 20px;
 }
 
 div.breadcrumbs span

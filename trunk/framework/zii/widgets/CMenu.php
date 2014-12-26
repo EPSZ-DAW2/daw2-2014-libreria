@@ -79,7 +79,7 @@ class CMenu extends CWidget
 	/**
 	 * @var boolean whether the labels for menu items should be HTML-encoded. Defaults to true.
 	 */
-	public $encodeLabel=true;
+	public $encodeLabel=false;
 	/**
 	 * @var string the CSS class to be appended to the active menu item. Defaults to 'active'.
 	 * If empty, the CSS class of menu items will not be changed.

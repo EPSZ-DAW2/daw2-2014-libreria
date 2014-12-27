@@ -97,6 +97,29 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+	
+	/**
+	 * Displays the register page
+	 */
+	public function actionRegistro(){
+		
+		$model = new RegistroForm;
+		
+		if(isset($_POST['ajax']) && $_POST['ajax']==='registro-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+		
+		if (isset($_POST['RegistroForm'])){
+		
+			$model->attributes = $_POST['RegistroForm'];
+			if(!$model->validate())
+				$model->addError('Repetir password', 'Error al enviar el formulario');
+
+		}
+		$this->render('registro',array('model'=>$model));	
+	}
 
 	/**
 	 * Logs out the current user and redirect to homepage.

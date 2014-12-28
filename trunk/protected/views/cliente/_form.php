@@ -17,35 +17,33 @@
 
 	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
 
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
+	<div class="row" style="display:none">
 		<?php echo $form->labelEx($model,'IdCliente'); ?>
-		<?php echo $form->textField($model,'IdCliente'); ?>
+		<?php echo $form->textField($model,'IdCliente',array('value'=>$model->cliente->IdUsuario,'readonly'=>true)); ?>
 		<?php echo $form->error($model,'IdCliente'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'DomicilioFacturacion'); ?>
-		<?php echo $form->textField($model,'DomicilioFacturacion',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'DomicilioFacturacion',array('size'=>60,'maxlength'=>100,'placeholder'=>'C/Roble, nº5 1ºD')); ?>
 		<?php echo $form->error($model,'DomicilioFacturacion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CPFacturacion'); ?>
-		<?php echo $form->textField($model,'CPFacturacion'); ?>
+		<?php echo $form->textField($model,'CPFacturacion',array('maxlength'=>5,'placeholder'=>'49003')); ?>
 		<?php echo $form->error($model,'CPFacturacion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'PoblacionFacturacion'); ?>
-		<?php echo $form->textField($model,'PoblacionFacturacion',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->textField($model,'PoblacionFacturacion',array('size'=>60,'maxlength'=>60,'placeholder'=>'Zamora')); ?>
 		<?php echo $form->error($model,'PoblacionFacturacion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ProvinciaFacturacion'); ?>
-		<?php echo $form->textField($model,'ProvinciaFacturacion',array('size'=>40,'maxlength'=>40)); ?>
+		<?php echo $form->textField($model,'ProvinciaFacturacion',array('size'=>40,'maxlength'=>40,'placeholder'=>'Zamora')); ?>
 		<?php echo $form->error($model,'ProvinciaFacturacion'); ?>
 	</div>
 

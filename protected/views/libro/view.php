@@ -7,32 +7,37 @@ $this->breadcrumbs=array(
 	$model->Titulo,
 );
 
-$this->menu=array(
-	array('label'=>'List Libro', 'url'=>array('index')),
-	array('label'=>'Create Libro', 'url'=>array('create')),
-	array('label'=>'Update Libro', 'url'=>array('update', 'id'=>$model->IdLibro)),
-	array('label'=>'Delete Libro', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdLibro),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Libro', 'url'=>array('admin')),
-);
 ?>
 
-<h1><?php echo $model->Titulo; ?></h1>
+<img class="portada_libro" src="<?php echo Yii:: app() ->baseUrl.'/images/portadas/'.$model->IdLibro.'.png' ?>">
 
-<img src="<?php echo Yii:: app() ->baseUrl.'/images/portadas/'.$model->IdLibro.'.png' ?>">
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'IdLibro',
-		'ISBN',
-		array( 'name'=>'IdEditorial', 'value'=>(($model->editorial !== null) ? $model->editorial->Nombre : '')),
-		'Titulo',
-		'Edicion',
-		'Paginas',
-		'Formato',
-		'IdIdioma',
-		'Resumen',
-		'Precio',
-		'Stock',
-	),
-)); ?>
+<div id="precio_libro">
+	Precio: <?php echo number_format($model->Precio, 2, ',', ' ').'€';?>
+</div>
+<div id="datos_libro">
+	<p style="font-size:20px;"><?php echo $model->Titulo; ?></p>
+	<?php /*
+		 $this->widget('zii.widgets.CListView', array(
+			'dataProvider'=> $dataProvider,
+			'itemView'=>'_view',
+			'emptyText'=>'No existen libros de este autor',
+			'template'=>"{sorter}\n{items}\n<div style='float:left;'>{summary}</div>\n{pager}",
+		)); 
+		*/
+	?>
+	<p>
+	<?php
+	echo CHtml::link(CHtml::encode((($model->editorial !== null) ? $model->editorial->Nombre : '')), $model->editorial->Web);
+	echo "<br /> ISBN: ".$model->ISBN;
+	echo "<br />".$model->Formato.", ".$model->Edicion;
+	echo "<br /> Páginas: ".$model->Paginas;
+	echo "<br />".(($model->idioma !== null) ? $model->idioma->Nombre : '');
+	?>
+	</p>
+</div>
+<div id="resumen_libro">
+	<?php
+	echo "<p style='font-size: 18px; font-weight:bold;'>RESUMEN DEL LIBRO:</p>";
+	echo "<p>".$model->Resumen."</p>";
+	?>
+</div>

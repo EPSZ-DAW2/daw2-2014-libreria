@@ -5,11 +5,6 @@
 $this->breadcrumbs=array(
 	'Libros',
 );
-
-$this->menu=array(
-	array('label'=>'Create Libro', 'url'=>array('create')),
-	array('label'=>'Manage Libro', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Libros</h1>

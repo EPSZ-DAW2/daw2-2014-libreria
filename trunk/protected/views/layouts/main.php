@@ -145,6 +145,14 @@
 				//array('label'=>'Administrar', 'url'=>array('/admin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')	|| Yii::app()->user->checkAccess( 'admin')),
 			),
 		)); ?>
+		
+	<div style='float: right;direction: ltr; color: #ffffff; margin: 5px 0 0 5px;'>
+        <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
+            <?php echo CHtml::textField('search_key') ?>
+            <?php echo CHtml::submitButton('Buscar'); ?>
+        <?php echo CHtml::endForm() ?>
+    </div>
+	
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(

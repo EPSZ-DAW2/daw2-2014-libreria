@@ -217,4 +217,16 @@ class LibroController extends Controller
             }
             $this->render('imagen',array('model'=>$model));
         }
+	
+	public function actionSearch()
+	{
+		$model = new Libro('search');
+		$model->unsetAttributes();
+		if(isset($_GET['search_key'])) 
+			$model->Titulo = $_GET['search_key'];     
+
+		$this -> render('search', array(
+			'model' => $model,
+		));
+	}
 }

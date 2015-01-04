@@ -128,31 +128,8 @@
 					),
 				),
 				array('label'=>'Visor de Gestión', 'url'=>array('/site/page', 'view'=>'indexadmin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')	|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
-				
-				//Menu Original
-				//-----------------
-				//array('label'=>'Inicio', 'url'=>array('/site/index')),
-				//array('label'=>'Libros', 'url'=>array('/libro')),
-				//array('label'=>'Autores', 'url'=>array('/autor')),
-				//array('label'=>'Editoriales', 'url'=>array('/editorial')),
-				//array('label'=>'Clientes', 'url'=>array('/cliente')),
-				//array('label'=>'Configuración', 'url'=>array('/site/configuracion')),
-				//array('label'=>'Contacto', 'url'=>array('/site/contact')),
-				//array('label'=>'Acceder', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				//array('label'=>'Registrarse', 'url'=>array('/site/registro'), 'visible'=>Yii::app()->user->isGuest),
-				//array('label'=>'Desconectar ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-				//array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
-				//array('label'=>'Administrar', 'url'=>array('/admin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')	|| Yii::app()->user->checkAccess( 'admin')),
 			),
 		)); ?>
-		
-	<div style='float: right;direction: ltr; color: #ffffff; margin: 5px 20px 0 5px;'>
-        <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
-            <?php echo CHtml::textField('search_key') ?>
-            <?php echo CHtml::submitButton('Buscar'); ?>
-        <?php echo CHtml::endForm() ?>
-    </div>
-	
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
@@ -160,6 +137,13 @@
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
+	<div style='float: right; margin: -35px 20px 0 5px;'>
+        <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
+            <?php echo CHtml::textField('search_key') ?>
+            <?php echo CHtml::submitButton('Buscar'); ?>
+        <?php echo CHtml::endForm() ?>
+    </div>
+	
 	<?php echo $content; ?>
 	<div class="clear"></div>
 

@@ -146,7 +146,7 @@
 			),
 		)); ?>
 		
-	<div style='float: right;direction: ltr; color: #ffffff; margin: 5px 0 0 5px;'>
+	<div style='float: right;direction: ltr; color: #ffffff; margin: 5px 20px 0 5px;'>
         <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
             <?php echo CHtml::textField('search_key') ?>
             <?php echo CHtml::submitButton('Buscar'); ?>

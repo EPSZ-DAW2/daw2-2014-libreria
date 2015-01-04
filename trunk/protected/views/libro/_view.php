@@ -5,20 +5,12 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IdLibro')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->IdLibro), array('view', 'id'=>$data->IdLibro)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Titulo')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->Titulo), array('view', 'id'=>$data->IdLibro)); ?>
 	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ISBN')); ?>:</b>
 	<?php echo CHtml::encode($data->ISBN); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IdEditorial')); ?>:</b>
-	<?php echo CHtml::encode($data->IdEditorial); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Titulo')); ?>:</b>
-	<?php echo CHtml::encode($data->Titulo); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Edicion')); ?>:</b>
@@ -32,8 +24,17 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Formato')); ?>:</b>
 	<?php echo CHtml::encode($data->Formato); ?>
 	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Precio')); ?>:</b>
+	<?php echo CHtml::encode($data->Precio); ?>
+	<br />
 
 	<?php /*
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('IdLibro')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->IdLibro), array('view', 'id'=>$data->IdLibro)); ?>
+	<br />
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('IdIdioma')); ?>:</b>
 	<?php echo CHtml::encode($data->IdIdioma); ?>
 	<br />
@@ -42,8 +43,8 @@
 	<?php echo CHtml::encode($data->Resumen); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Precio')); ?>:</b>
-	<?php echo CHtml::encode($data->Precio); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Editorial')); ?>:</b>
+	<?php echo CHtml::encode($data->IdEditorial); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Stock')); ?>:</b>

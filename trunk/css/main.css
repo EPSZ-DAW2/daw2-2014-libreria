@@ -378,3 +378,37 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+.portada_libro{
+	padding: 10px;
+	max-width: 15%;
+	float: left;
+}
+
+#datos_libro{
+	padding: 10px;
+	max-width: 65%;
+	font-size: 13px;
+	text-align: left;
+	float: center;
+	font-weight:bold;
+}
+
+#resumen_libro{
+	padding: 10px;
+	float: right;
+	max-width: 70%;
+	border: 1px solid;
+	font-size: 14px;
+	text-align: left;
+	text-align : justify;
+}
+
+#precio_libro{
+	padding: 10px;
+	float: right;
+	max-width: 20%;
+	text-align: right;
+	font-size: 25px;
+	font-weight:bold;
+}

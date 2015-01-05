@@ -18,9 +18,14 @@
     ),
 ));
 	*/
-	
+	if(isset($_GET['search_key'])){
+		echo "<h1>Búsqueda realizada: '".$_GET['search_key']."'</h1>";
+	}
+	echo "Libros ordenados por Precio";
+	$dataProvider= $model->search();
+	$dataProvider->sort->defaultOrder='Precio ASC';
 	$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 ));
 ?>

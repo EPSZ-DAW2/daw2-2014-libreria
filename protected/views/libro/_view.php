@@ -5,6 +5,15 @@
 
 <div class="view">
 
+	<div id="bloque_comprar">
+		<?php
+		echo CHtml::form(Yii::app()->createUrl('carrito'),'get');
+			echo CHtml::hiddenField('IdLibro',$data->IdLibro);
+			echo CHtml::submitButton('Comprar');
+		echo CHtml::endForm();
+		?>
+	</div>
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Titulo')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->Titulo), array('view', 'id'=>$data->IdLibro)); ?>
 	<br />
@@ -26,7 +35,7 @@
 	<br />
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Precio')); ?>:</b>
-	<?php echo CHtml::encode(number_format($data->Precio, 2, ',', ' ').'€'); ?>
+	<?php echo CHtml::encode(number_format($data->Precio, 2, ',', ' ').'€');?>
 	<br />
 
 	<?php /*

@@ -32,12 +32,8 @@ class LibroController extends Controller
 				'roles'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','imagen'),
-				'roles'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'roles'=>array('admin'),
+				'actions'=>array('create','update','imagen','admin','delete'),
+				'roles'=>array('admin','gerente','libreria','sysadmin'),
 			),
 			array('deny',  // deny all users
 				'roles'=>array('*'),

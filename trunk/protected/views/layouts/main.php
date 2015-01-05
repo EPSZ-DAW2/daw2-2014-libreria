@@ -131,18 +131,19 @@
 			),
 		)); ?>
 	</div><!-- mainmenu -->
+	
+	<div id="busqueda_libros">
+        <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
+            <?php echo CHtml::textField('search_key'); ?>
+            <?php echo CHtml::submitButton('Busqueda Por Título'); ?>
+        <?php echo CHtml::endForm() ?>
+    </div>
+	
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
-	<div style='float: right; margin: -35px 20px 0 5px;'>
-        <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
-            <?php echo CHtml::textField('search_key') ?>
-            <?php echo CHtml::submitButton('Buscar'); ?>
-        <?php echo CHtml::endForm() ?>
-    </div>
 	
 	<?php echo $content; ?>
 	<div class="clear"></div>

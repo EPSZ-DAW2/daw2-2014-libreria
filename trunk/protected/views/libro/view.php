@@ -2,6 +2,7 @@
 /* @var $this LibroController */
 /* @var $model Libro */
 
+
 $this->breadcrumbs=array(
 	'Libros'=>array('index'),
 	$model->Titulo,

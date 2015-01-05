@@ -412,3 +412,9 @@ div.search-form
 	font-size: 25px;
 	font-weight:bold;
 }
+
+#busqueda_libros{
+	float: center; 
+	max-width: 60%;
+	margin: 20px auto 10px auto;
+}

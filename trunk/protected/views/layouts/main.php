@@ -117,14 +117,14 @@
 				),
 				array(
 					'label'=>'Pedidos   <img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/drop.png" />',
-					'url'=>array('/pedidos'),
+					'url'=>array('/pedido'),
 					'linkoptions'=>array('id'=>'menuPedidos'),
 					'itemoptions'=>array('id'=>'itemPedidos'),
 					'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'cliente'),
 					'items'=>array(
-						array('label'=>'Administrar Pedidos', 'url'=>array('/pedidos'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
+						array('label'=>'Administrar Pedidos', 'url'=>array('/pedido'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
 						array('label'=>'', 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
-						array('label'=>'Ver mis Pedidos >', 'url'=>array('/pedidos')),
+						array('label'=>'Ver mis Pedidos >', 'url'=>array('/pedido')),
 					),
 				),
 				array('label'=>'Visor de Gestión', 'url'=>array('/site/page', 'view'=>'indexadmin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')	|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),

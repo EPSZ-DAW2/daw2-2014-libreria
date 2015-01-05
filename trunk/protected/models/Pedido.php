@@ -66,6 +66,7 @@ class Pedido extends CActiveRecord
 		return array(
 			'lineas' => array(self::HAS_MANY, 'Linea', 'IdPedido'),
 			'cliente' => array(self::BELONGS_TO, 'Cliente', 'IdCliente'),
+			'usuario' => array(self::BELONGS_TO, 'Usuario', array('IdCliente'=>'idUsuario')),//Relacion pedido/usuario
 			'estado' => array(self::BELONGS_TO, 'Estado', 'IdEstado'),
 			'pago' => array(self::BELONGS_TO, 'FormaPago', 'IdPago'),
 		);

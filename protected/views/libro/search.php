@@ -4,7 +4,9 @@
 /* @var $form CActiveForm */
 ?>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+	/*
+	$this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'libro-grid',
     'dataProvider'=>$model->search(),
     //'filter'=>$model,
@@ -14,4 +16,11 @@
             'class'=>'CButtonColumn',
         ),
     ),
-)); ?>
+));
+	*/
+	
+	$this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$model->search(),
+	'itemView'=>'_view',
+));
+?>

@@ -140,7 +140,13 @@ class LibroController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Libro');
+		$dataProvider=new CActiveDataProvider('Libro',
+			array(
+				'pagination'=> array(
+					'pageSize'=>10
+				)
+				)
+			);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -219,7 +225,7 @@ class LibroController extends Controller
 		$model = new Libro('search');
 		$model->unsetAttributes();
 		if(isset($_GET['search_key'])) 
-			$model->Titulo = $_GET['search_key'];     
+			$model->Titulo = $_GET['search_key']; 
 
 		$this -> render('search', array(
 			'model' => $model,

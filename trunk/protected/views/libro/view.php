@@ -13,7 +13,14 @@ $this->breadcrumbs=array(
 <img class="portada_libro" src="<?php echo Yii:: app() ->baseUrl.'/images/portadas/'.$model->IdLibro.'.png' ?>">
 
 <div id="precio_libro">
-	Precio: <?php echo number_format($model->Precio, 2, ',', ' ').'€';?>
+	Precio: <?php echo number_format($model->Precio, 2, ',', ' ')."€";?>
+	<?php
+		echo "<br /><br />";
+		echo CHtml::form(Yii::app()->createUrl('carrito'),'get');
+		echo CHtml::hiddenField('IdLibro',$model->IdLibro);
+		echo CHtml::submitButton('Comprar');
+		echo CHtml::endForm();
+	?>
 </div>
 <div id="datos_libro">
 	<p style="font-size:20px;"><?php echo $model->Titulo; ?></p>

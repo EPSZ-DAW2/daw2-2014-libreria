@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 <h1>Libros</h1>
 
-<div id="ordenar" style="margin-right: 10px; text-align: right;">
+<div id="ordenar" style="text-align: right;">
 <?php 
 echo CHtml::form(Yii::app()->createUrl('libro'),'get');
 echo CHtml::submitButton('Orden PVP');

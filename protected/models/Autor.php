@@ -86,7 +86,7 @@ class Autor extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		$criteria->group = 'Nombre';
-		$criteria->select = 't.Nombre, t.Web, nacionalidad.IdNacionalidad';
+		$criteria->select = 't.IdAutor, t.Nombre, t.Web, nacionalidad.IdNacionalidad';
 		$criteria->join = ' LEFT JOIN `nacionalidad` ON t.IdNacionalidad = nacionalidad.IdNacionalidad';
 		$criteria->compare('Nombre',$this->Nombre,true);
 		$criteria->compare('IdNacionalidad',$this->IdNacionalidad);

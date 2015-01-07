@@ -3,19 +3,19 @@
 /* @var $model Editorial */
 
 $this->breadcrumbs=array(
-	'Editorials'=>array('index'),
-	$model->IdEditorial=>array('view','id'=>$model->IdEditorial),
-	'Update',
+	'Editoriales'=>array('index'),
+	$model->Nombre=>array('view','id'=>$model->IdEditorial),
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Editorial', 'url'=>array('index')),
-	array('label'=>'Create Editorial', 'url'=>array('create')),
-	array('label'=>'View Editorial', 'url'=>array('view', 'id'=>$model->IdEditorial)),
-	array('label'=>'Manage Editorial', 'url'=>array('admin')),
+	array('label'=>'Listar Editoriales', 'url'=>array('index')),
+	array('label'=>'Crear Editorial', 'url'=>array('create')),
+	array('label'=>'Ver Editorial', 'url'=>array('view', 'id'=>$model->Nombre)),
+	array('label'=>'Gestionar Editoriales', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Editorial <?php echo $model->IdEditorial; ?></h1>
+<h1>Actualizar Editorial: <?php echo $model->Nombre; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

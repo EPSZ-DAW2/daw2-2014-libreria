@@ -22,9 +22,9 @@ $this->menu=array(
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'cliente.Nombre',
-		'cliente.Apellidos',
-		'cliente.NIF',
+		array('name'=>'nombreCliente', 'value'=>'$data->usuario->Nombre'),
+		array('name'=>'apellidosCliente', 'value'=>'$data->usuario->Apellidos'),
+		array('name'=>'nifCliente', 'value'=>'$data->usuario->NIF'),
 		'DomicilioFacturacion',
 		'CPFacturacion',
 		'PoblacionFacturacion',

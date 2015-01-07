@@ -16,6 +16,9 @@
  */
 class Cliente extends CActiveRecord
 {
+	public $nombreCliente;
+	public $apellidosCliente;
+	public $nifCliente;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,7 +42,7 @@ class Cliente extends CActiveRecord
 			array('ProvinciaFacturacion', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdCliente, DomicilioFacturacion, CPFacturacion, PoblacionFacturacion, ProvinciaFacturacion', 'safe', 'on'=>'search'),
+			array('IdCliente, nombreCliente, apellidosCliente, nifCliente,  DomicilioFacturacion, CPFacturacion, PoblacionFacturacion, ProvinciaFacturacion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +54,7 @@ class Cliente extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cliente' => array(self::BELONGS_TO, 'Usuario', 'IdCliente'),
+			'usuario' => array(self::BELONGS_TO, 'Usuario', 'IdCliente'),
 			'pedidos' => array(self::HAS_MANY, 'Pedido', 'IdCliente'),
 		);
 	}
@@ -88,6 +91,11 @@ class Cliente extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->with = array('usuario');
+
+		$criteria->compare('usuario.Nombre',$this->nombreCliente,true);
+		$criteria->compare('usuario.Apellidos',$this->apellidosCliente,true);
+		$criteria->compare('usuario.NIF',$this->nifCliente);
 		$criteria->compare('IdCliente',$this->IdCliente);
 		$criteria->compare('DomicilioFacturacion',$this->DomicilioFacturacion,true);
 		$criteria->compare('CPFacturacion',$this->CPFacturacion);
@@ -96,6 +104,23 @@ class Cliente extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'nombreCliente'=>array(
+						'asc'=>'usuario.Nombre',
+						'desc'=>'usuario.Nombre DESC'
+					),
+					'apellidosCliente'=>array(
+						'asc'=>'usuario.Apellidos',
+						'desc'=>'usuario.Apellidos DESC'
+					),
+					'nifCliente'=>array(
+						'asc'=>'usuario.NIF',
+						'desc'=>'usuario.NIF DESC'
+					),
+					'*',
+				)
+			)
 		));
 	}
 

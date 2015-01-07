@@ -17,15 +17,15 @@
 
 	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
 
-	<div class="row" style="display:none">
+	<div class="row">
 		<?php echo $form->labelEx($model,'IdCliente'); ?>
-		<?php echo $form->textField($model,'IdCliente',array('value'=>$model->cliente->IdUsuario,'readonly'=>true)); ?>
+		<?php echo $form->textField($model,'IdCliente');?>
 		<?php echo $form->error($model,'IdCliente'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'DomicilioFacturacion'); ?>
-		<?php echo $form->textField($model,'DomicilioFacturacion',array('size'=>60,'maxlength'=>100,'placeholder'=>'C/Roble, nº5 1ºD')); ?>
+		<?php echo $form->textField($model,'DomicilioFacturacion',array('size'=>60,'maxlength'=>100,'placeholder'=>'C/Roble, 5 1D')); ?>
 		<?php echo $form->error($model,'DomicilioFacturacion'); ?>
 	</div>
 

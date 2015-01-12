@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Todos los campos con <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'IdEditorial'); ?>
-		<?php echo $form->textField($model,'IdEditorial'); ?>
+		<?php echo $form->dropDownList($model,'IdEditorial',CHtml::listData(Editorial::model()->findAll(array('order' => 'Nombre')),'IdEditorial','Nombre'), array('prompt' => 'Seleccione una Editorial')); ?>
 		<?php echo $form->error($model,'IdEditorial'); ?>
 	</div>
 
@@ -57,7 +57,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'IdIdioma'); ?>
-		<?php echo $form->textField($model,'IdIdioma'); ?>
+		<?php echo $form->dropDownList($model,'IdIdioma',CHtml::listData(Idioma::model()->findAll(array('order' => 'Nombre')),'IdIdioma','Nombre'), array('prompt' => 'Seleccione una Editorial')); ?>
 		<?php echo $form->error($model,'IdIdioma'); ?>
 	</div>
 

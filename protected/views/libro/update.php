@@ -17,6 +17,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Libro <?php echo $model->IdLibro; ?></h1>
+<h1>Actualizar "<?php echo $model->Titulo; ?>"</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

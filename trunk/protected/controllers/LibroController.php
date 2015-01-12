@@ -48,30 +48,10 @@ class LibroController extends Controller
 	public function actionView($id)
 	{
 		
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-		/*
 		$libro = $this->loadModel($id);
-		$dataProvider=new CArrayDataProvider(
-			$libro->autores,
-			array(
-				'keyField'=>'IdAutor',
-				'sort'=>array(
-					'attributes'=>array(
-						'Nombre',
-					)
-				),
-				'pagination'=> array(
-					'pageSize' => 2,
-				)
-			)
-		);
 		$this->render('view',array(
 			'model'=>$libro,
-			'dataProvider' => $dataProvider,
 		));
-		*/
 	}
 
 	/**
@@ -200,25 +180,26 @@ class LibroController extends Controller
 			$model_libro=$this->loadModel($id);
             $model = new ImagenForm();
              if(isset($_POST['ImagenForm']))
-            {                
+            {       
+				$model->attributes=$_POST['ImagenForm'];
                 if(isset($_FILES) and $_FILES['ImagenForm']['error']['foto']==0)
                  {
                     $uf = CUploadedFile::getInstance($model, 'foto');
                     if($uf->getExtensionName() == "jpg" || $uf->getExtensionName() == "png" ||
                         $uf->getExtensionName() == "jpeg" || $uf->getExtensionName()== "gif")
                     {
-						$uf->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$uf->getName()); 
-						if(isset($_POST['yt1']) and $_POST['yt1']=="Guardar Imagen"){
-                          $uf->saveAs(Yii::getPathOfAlias('webroot').'/images/portadas'.$model_libro->IdLibro());                        
-                          Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$model_libro->IdLibro()." Subida Correctamente");
-						}
-                          Yii::app()->user->setFlash('imagen','/images/'.$uf->getName());
-                          $this->refresh();
+						$uf->saveAs(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png'); 
+						$model->extension= $uf->getExtensionName();
+                          Yii::app()->user->setFlash('imagen','/images/portadas/'.$model_libro->IdLibro.'tem.png');
                     }else{
                         Yii::app()->user->setFlash('error_imagen','Imagen no valida');
-                    }
-                    
+                    }  
                  }
+				 elseif(isset($_POST['BotonGuardar'])){
+					if(rename(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png',Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'.png')){
+						Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$model_libro->IdLibro." Subida Correctamente");
+					}
+				}
             }
             $this->render('imagen',array('model'=>$model,'model_libro'=>$model_libro));
         }

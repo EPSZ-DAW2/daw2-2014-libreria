@@ -24,14 +24,17 @@ $this->breadcrumbs=array(
 </div>
 <div id="datos_libro">
 	<p style="font-size:20px;"><?php echo $model->Titulo; ?></p>
-	<?php /*
-		 $this->widget('zii.widgets.CListView', array(
-			'dataProvider'=> $dataProvider,
-			'itemView'=>'_view',
-			'emptyText'=>'No existen libros de este autor',
-			'template'=>"{sorter}\n{items}\n<div style='float:left;'>{summary}</div>\n{pager}",
-		)); 
-		*/
+	<?php
+	$i=0;
+	foreach($model->autores as $autor){
+		if($i==0){
+			echo "Autores: ";
+		}else{
+			echo " - ";
+		}
+		echo CHtml::link(CHtml::encode($autor->Nombre), array('autor/view', 'id'=>$autor->IdAutor));
+		$i++;
+	}	
 	?>
 	<p>
 	<?php

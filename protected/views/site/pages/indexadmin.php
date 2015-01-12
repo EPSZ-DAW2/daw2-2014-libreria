@@ -99,13 +99,13 @@ th, td {
 					'.CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/iconos/pedidos.png" />',array('')).'
 					<br><b>Gestión de Pedidos</b>
 					</td>
-					<td>'.CHtml::link('Registrar Nuevo Pedido', array('')).'</td>
+					<td>'.CHtml::link('Registrar Nuevo Pedido', array('pedido/create')).'</td>
 				</tr>
 				<tr>
-					<td>'.CHtml::link('Modificar Pedidos', array('')).'</td>
+					<td>'.CHtml::link('Modificar Pedidos', array('pedido/admin')).'</td>
 				</tr>
 				<tr>
-					<td>'.CHtml::link('Listar Pedidos', array('')).'</td>
+					<td>'.CHtml::link('Listar Pedidos', array('pedido/')).'</td>
 				</tr>
 			';
 		}

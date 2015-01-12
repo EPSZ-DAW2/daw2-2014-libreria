@@ -28,17 +28,17 @@ class PedidoController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
+				'actions'=>array('index','view','create','update','admin','delete'),
+				'roles'=>array('admin','gerente','libreria','sysadmin','vendedor','cliente'),
+			),/*
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
+				'roles'=>array('admin','gerente','libreria','sysadmin','vendedor','cliente'),
+			),/*
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
-			),
+			),*/
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -123,6 +123,13 @@ class PedidoController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Pedido');
+		if(Yii::app()->user->checkAccess( 'cliente')){
+			$dataProvider->setCriteria(array(
+			'condition'=>'IdCliente=:id',
+			'params'=>array( ':id'=>Yii::app()->user->id
+			),
+		));
+		}
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

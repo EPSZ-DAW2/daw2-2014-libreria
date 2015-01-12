@@ -195,8 +195,9 @@ class LibroController extends Controller
 		}
 	}
 	
-	public function actionImagen()
+	public function actionImagen($id)
         {
+			$model_libro=$this->loadModel($id);
             $model = new ImagenForm();
              if(isset($_POST['ImagenForm']))
             {                
@@ -206,9 +207,11 @@ class LibroController extends Controller
                     if($uf->getExtensionName() == "jpg" || $uf->getExtensionName() == "png" ||
                         $uf->getExtensionName() == "jpeg" || $uf->getExtensionName()== "gif")
                     {
-                          $uf->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$uf->getName());
-                        
-                          Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$uf->getName()." Subida Correctamente");
+						$uf->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$uf->getName()); 
+						if(isset($_POST['yt1']) and $_POST['yt1']=="Guardar Imagen"){
+                          $uf->saveAs(Yii::getPathOfAlias('webroot').'/images/portadas'.$model_libro->IdLibro());                        
+                          Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$model_libro->IdLibro()." Subida Correctamente");
+						}
                           Yii::app()->user->setFlash('imagen','/images/'.$uf->getName());
                           $this->refresh();
                     }else{
@@ -217,7 +220,7 @@ class LibroController extends Controller
                     
                  }
             }
-            $this->render('imagen',array('model'=>$model));
+            $this->render('imagen',array('model'=>$model,'model_libro'=>$model_libro));
         }
 	
 	public function actionSearch()

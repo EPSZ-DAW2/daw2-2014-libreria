@@ -9,10 +9,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Libro', 'url'=>array('index')),
-	array('label'=>'Create Libro', 'url'=>array('create')),
-	array('label'=>'View Libro', 'url'=>array('view', 'id'=>$model->IdLibro)),
-	array('label'=>'Manage Libro', 'url'=>array('admin')),
+	array('label'=>'Listar Libros', 'url'=>array('index')),
+	array('label'=>'Insertar Libro', 'url'=>array('create')),
+	array('label'=>'Ver Libro', 'url'=>array('view', 'id'=>$model->IdLibro)),
+	array('label'=>'Administrar Libros', 'url'=>array('admin')),
+	array('label'=>'Modificar Portada', 'url'=>array('imagen', 'id'=>$model->IdLibro)),
 );
 ?>
 

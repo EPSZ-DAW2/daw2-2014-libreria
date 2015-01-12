@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Libro', 'url'=>array('index')),
-	array('label'=>'Create Libro', 'url'=>array('create')),
+	array('label'=>'Listar Libros', 'url'=>array('index')),
+	array('label'=>'Insertar Libro', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Libros</h1>
+<h1>Administrar Libros</h1>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">

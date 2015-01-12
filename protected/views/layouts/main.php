@@ -65,8 +65,8 @@
 					'linkoptions'=>array('id'=>'menuLibros'),
 					'itemoptions'=>array('id'=>'itemLibros'),
 					'items'=>array(
-						array('label'=>'Crear Registro', 'url'=>array('libro/create'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
-						array('label'=>'Listar Registros', 'url'=>array('libro/admin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
+						array('label'=>'Insertar Libro', 'url'=>array('libro/create'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
+						array('label'=>'Administrar Libros', 'url'=>array('libro/admin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
 						array('label'=>'', 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
 						array('label'=>'¡Descubre algo nuevo!', 'url'=>array('libro/view&id='.rand(1,9))),
 						array('label'=>'El más vendido', 'url'=>array('libro/view&id=7')),

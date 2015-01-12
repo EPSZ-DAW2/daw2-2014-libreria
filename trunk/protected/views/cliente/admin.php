@@ -25,6 +25,7 @@ $this->menu=array(
 		array('name'=>'nombreCliente', 'value'=>'$data->usuario->Nombre'),
 		array('name'=>'apellidosCliente', 'value'=>'$data->usuario->Apellidos'),
 		array('name'=>'nifCliente', 'value'=>'$data->usuario->NIF'),
+		array('name'=>'emailCliente', 'value'=>'$data->usuario->Email'),
 		'DomicilioFacturacion',
 		'CPFacturacion',
 		'PoblacionFacturacion',

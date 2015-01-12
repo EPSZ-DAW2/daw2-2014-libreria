@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Clientes'=>array('index'),
-	$model->cliente->Nombre=>array('view','id'=>$model->IdCliente),
+	$model->usuario->Nombre=>array('view','id'=>$model->IdCliente),
 	'Actualizar',
 );
 
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Actualizar Cliente: <?php echo $model->cliente->Nombre; ?></h1>
+<h1>Actualizar Cliente: <?php echo $model->usuario->Nombre; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

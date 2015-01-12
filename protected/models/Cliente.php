@@ -19,6 +19,7 @@ class Cliente extends CActiveRecord
 	public $nombreCliente;
 	public $apellidosCliente;
 	public $nifCliente;
+	public $emailCliente;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -42,7 +43,7 @@ class Cliente extends CActiveRecord
 			array('ProvinciaFacturacion', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdCliente, nombreCliente, apellidosCliente, nifCliente,  DomicilioFacturacion, CPFacturacion, PoblacionFacturacion, ProvinciaFacturacion', 'safe', 'on'=>'search'),
+			array('IdCliente, nombreCliente, apellidosCliente, nifCliente, emailCliente, DomicilioFacturacion, CPFacturacion, PoblacionFacturacion, ProvinciaFacturacion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -96,6 +97,7 @@ class Cliente extends CActiveRecord
 		$criteria->compare('usuario.Nombre',$this->nombreCliente,true);
 		$criteria->compare('usuario.Apellidos',$this->apellidosCliente,true);
 		$criteria->compare('usuario.NIF',$this->nifCliente);
+		$criteria->compare('usuario.Email',$this->emailCliente);
 		$criteria->compare('IdCliente',$this->IdCliente);
 		$criteria->compare('DomicilioFacturacion',$this->DomicilioFacturacion,true);
 		$criteria->compare('CPFacturacion',$this->CPFacturacion);
@@ -117,6 +119,10 @@ class Cliente extends CActiveRecord
 					'nifCliente'=>array(
 						'asc'=>'usuario.NIF',
 						'desc'=>'usuario.NIF DESC'
+					),
+					'emailCliente'=>array(
+						'asc'=>'usuario.emailCliente',
+						'desc'=>'usuario.emailCliente DESC'
 					),
 					'*',
 				)

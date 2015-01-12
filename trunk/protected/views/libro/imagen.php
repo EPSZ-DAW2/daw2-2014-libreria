@@ -1,11 +1,18 @@
 <?php
+/* @var $this LibroController */
+/* @var $model Imagen */
+/* @var $model_libro Libro */
+
 $this->pageTitle=Yii::app()->name . ' - Subir Imagen';
 $this->breadcrumbs=array(
-	'Subir Imagen',
+	'Libros'=>array('index'),
+	$model_libro->IdLibro=>array('imagen','id'=>$model_libro->IdLibro),
+	'Actualizar Imagen Portada',
 );
 ?>
-
-<h1>¿Como subir una Imagen con Yii?</h1>
+<img class="portada_libro" src="<?php echo Yii:: app() ->baseUrl.'/images/portadas/'.$model_libro->IdLibro.'.png' ?>">
+<h1>Actualizar la imagen de Portada</h1>
+<p style="font-size:20px;"><?php echo $model_libro->Titulo; ?></p>
 <?php if(Yii::app()->user->hasFlash("error_imagen")){?>
 <div class="flash-error">
     <?php echo Yii::app()->user->getFlash("error_imagen"); ?>   
@@ -27,7 +34,6 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Los Campos con<span class="required">*</span> Son Boligatorios.</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'foto'); ?>
@@ -35,13 +41,18 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'foto'); ?>
 	</div>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Subir Imagen'); ?>
+		<?php echo CHtml::submitButton('Vista Previa'); ?>
 	</div>
+	<?php if(Yii::app()->user->hasFlash("imagen")){?>
+		<div class="flash-success">    
+			<?php echo CHtml::image(Yii::app()->request->baseUrl."".Yii::app()->user->getFlash("imagen"));?>    
+			<div class="row buttons">
+				<?php echo CHtml::submitButton('Guardar Imagen'); ?>
+			</div>
+		</div>
+		<?php }?>
+		
+	
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
-<?php if(Yii::app()->user->hasFlash("imagen")){?>
-<div class="flash-success">    
-    <?php echo CHtml::image(Yii::app()->request->baseUrl."".Yii::app()->user->getFlash("imagen"));?>    
-</div>
-<?php }?>

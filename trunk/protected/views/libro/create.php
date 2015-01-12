@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Libro', 'url'=>array('index')),
-	array('label'=>'Manage Libro', 'url'=>array('admin')),
+	array('label'=>'Listar Libros', 'url'=>array('index')),
+	array('label'=>'Administrar Libros', 'url'=>array('admin')),
 );
 ?>
 

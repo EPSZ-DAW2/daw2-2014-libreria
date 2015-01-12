@@ -387,11 +387,18 @@ div.search-form
 
 #datos_libro{
 	padding: 10px;
+	margin: 10px;
 	max-width: 65%;
 	font-size: 13px;
 	text-align: left;
 	float: center;
 	font-weight:bold;
+}
+
+#autores_libro{
+	padding: 10px;
+	width: 70%;
+	float: left;
 }
 
 #resumen_libro{

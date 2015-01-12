@@ -39,15 +39,16 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'foto'); ?>
 		<?php echo $form->fileField($model,'foto'); ?>
 		<?php echo $form->error($model,'foto'); ?>
+		<?php echo $form->hiddenField($model,'extension'); ?>
 	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Vista Previa'); ?>
 	</div>
 	<?php if(Yii::app()->user->hasFlash("imagen")){?>
 		<div class="flash-success">    
-			<?php echo CHtml::image(Yii::app()->request->baseUrl."".Yii::app()->user->getFlash("imagen"));?>    
+			<?php echo CHtml::image(Yii::app()->request->baseUrl."".Yii::app()->user->getFlash("imagen"),'',array('class'=>'portada_libro'));?>    
 			<div class="row buttons">
-				<?php echo CHtml::submitButton('Guardar Imagen'); ?>
+				<?php echo CHtml::submitButton('Guardar Imagen',array('name'=>'BotonGuardar')); ?>
 			</div>
 		</div>
 		<?php }?>

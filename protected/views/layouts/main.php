@@ -30,7 +30,7 @@
 	<div id="mainmenu3">
 	<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/logout.png" />   Cerrar Sesión', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/logout.png" />   Cerrar Sesión ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/login.png" />   Accede ', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/separador.png" />', 'url'=>array('')),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/registro.png" />   Regístrate', 'url'=>array('/site/registro'), 'visible'=>Yii::app()->user->isGuest),

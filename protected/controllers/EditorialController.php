@@ -27,20 +27,17 @@ class EditorialController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
+			array('allow',  // allow all: sysadmin y admin
+				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete', 'search'),
+				'roles'=>array('sysadmin, admin'),
+			),
+			array('allow',  // allow all: sysadmin y admin
 				'actions'=>array('index','view'),
-				'roles'=>array('*'),
+				'roles'=>array('cliente'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'roles'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'roles'=>array('admin'),
-			),
-			array('deny',  // deny all roles
-				'roles'=>array('*'),
+			array('allow',  // allow all: sysadmin y admin
+				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete'),
+				'roles'=>array('libreria'),
 			),
 		);
 	}

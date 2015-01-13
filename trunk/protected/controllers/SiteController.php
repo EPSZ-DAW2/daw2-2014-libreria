@@ -116,7 +116,22 @@ class SiteController extends Controller
 			$model->attributes = $_POST['RegistroForm'];
 			if(!$model->validate())
 				$model->addError('Repetir password', 'Error al enviar el formulario');
-
+			else {
+					$mail=Yii::app()->Smtpmail;
+					$mail->SetFrom('daw2giisi@gmail.com','Libreria Daw');
+					$mail->Subject='Registro de Nuevo Usuario';
+					$mail->MsgHTML('eeeeeeeeeeeeeeeee');
+					$mail->AddAddress($model->email);
+					if(!$mail->Send()) 
+					{
+						Yii::app()->user->setFlash('registro','Mailer Error: ' . $mail->ErrorInfo);
+					}
+					else 
+					{
+						Yii::app()->user->setFlash('registro','El correo ha sido enviado!');						
+					}
+			
+			}
 		}
 		$this->render('registro',array('model'=>$model));	
 	}

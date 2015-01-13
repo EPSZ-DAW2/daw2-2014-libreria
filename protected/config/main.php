@@ -80,6 +80,16 @@ return array(
 			'itemChildTable'=>'authitemchild',
 			'assignmentTable'=>'authassignment',
 		),
+		'Smtpmail'=>array(
+            'class'=>'application.extensions.smtpmail.PHPMailer',
+            'Host'=>'smtp.gmail.com',
+            'Username'=>'daw2giisi@gmail.com',
+            'Password'=>'informatic*',
+            'Mailer'=>'smtp',
+            'Port'=>587,
+            'SMTPAuth'=>true, 
+            'SMTPSecure' => 'tls',
+        ),
 	),
 
 	// application-level parameters that can be accessed

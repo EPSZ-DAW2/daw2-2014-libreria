@@ -128,7 +128,8 @@ class SiteController extends Controller
 					}
 					else 
 					{
-						Yii::app()->user->setFlash('registro','El correo ha sido enviado!');						
+						Yii::app()->user->setFlash('registro','El correo ha sido enviado!');	
+						$model = new RegistroForm;						
 					}
 			
 			}

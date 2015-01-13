@@ -10,7 +10,10 @@ $this->breadcrumbs=array('registro');
 <h1>Registro</h1>
 
 <div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php 
+echo Yii::app()->user->getFlash("registro");    
+
+$form=$this->beginWidget('CActiveForm', array(
 	'id'=>'registro-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(

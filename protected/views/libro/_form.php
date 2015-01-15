@@ -51,13 +51,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Formato'); ?>
-		<?php echo $form->textField($model,'Formato',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->dropDownList($model,'Formato',array('PAPEL'=>'PAPEL','EBOOK'=>'EBOOK')); ?>
 		<?php echo $form->error($model,'Formato'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'IdIdioma'); ?>
-		<?php echo $form->dropDownList($model,'IdIdioma',CHtml::listData(Idioma::model()->findAll(array('order' => 'Nombre')),'IdIdioma','Nombre'), array('prompt' => 'Seleccione una Editorial')); ?>
+		<?php echo $form->dropDownList($model,'IdIdioma',CHtml::listData(Idioma::model()->findAll(array('order' => 'Nombre')),'IdIdioma','Nombre'), array('prompt' => 'Seleccione un Idioma')); ?>
 		<?php echo $form->error($model,'IdIdioma'); ?>
 	</div>
 

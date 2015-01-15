@@ -68,8 +68,13 @@ class LibroController extends Controller
 		if(isset($_POST['Libro']))
 		{
 			$model->attributes=$_POST['Libro'];
-			if($model->save())
+			if($model->save()){
+				if(file_exists(Yii::getPathOfAlias('webroot').'/images/portadas/0_BIG.png')){
+					if(copy(Yii::getPathOfAlias('webroot').'/images/portadas/0_BIG.png',Yii::getPathOfAlias('webroot').'/images/portadas/'.$model->IdLibro.'.png')){
+					}
+				}
 				$this->redirect(array('view','id'=>$model->IdLibro));
+			}
 		}
 
 		$this->render('create',array(
@@ -188,16 +193,18 @@ class LibroController extends Controller
                     if($uf->getExtensionName() == "jpg" || $uf->getExtensionName() == "png" ||
                         $uf->getExtensionName() == "jpeg" || $uf->getExtensionName()== "gif")
                     {
-						$uf->saveAs(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png'); 
-						$model->extension= $uf->getExtensionName();
+						$uf->saveAs(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png');
                           Yii::app()->user->setFlash('imagen','/images/portadas/'.$model_libro->IdLibro.'tem.png');
                     }else{
                         Yii::app()->user->setFlash('error_imagen','Imagen no valida');
                     }  
                  }
 				 elseif(isset($_POST['BotonGuardar'])){
-					if(rename(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png',Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'.png')){
-						Yii::app()->user->setFlash('noerror_imagen',"Imagen: ".$model_libro->IdLibro." Subida Correctamente");
+					if(file_exists(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png')){
+						if(rename(Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'tem.png',Yii::getPathOfAlias('webroot').'/images/portadas/'.$model_libro->IdLibro.'.png')){
+							$model = new ImagenForm();
+							Yii::app()->user->setFlash('noerror_imagen','Imagen: '.$model_libro->IdLibro.' Subida Correctamente');
+						}
 					}
 				}
             }

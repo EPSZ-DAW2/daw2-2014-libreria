@@ -429,3 +429,14 @@ div.search-form
 #bloque_comprar{
 	float: right;
 }
+
+#formulario_imagen{
+	float: left;
+	width: 100%;
+	margin: 10px;
+}
+
+.flash_imagen{
+	padding: 10px;
+	max-width: 15%;
+}

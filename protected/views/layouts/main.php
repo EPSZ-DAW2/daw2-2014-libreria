@@ -130,6 +130,28 @@
 						array('label'=>'Ver mis Pedidos >', 'url'=>array('/pedido')),
 					),
 				),
+				array(
+					'label'=>'XCategorias   <img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/drop.png" />',
+					'url'=>array('/pedido'),
+					'linkoptions'=>array('id'=>'menuPedidos'),
+					'itemoptions'=>array('id'=>'itemPedidos'),
+					'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'cliente'),
+					'items'=>array(
+						array('label'=>'Administrar Pedidos', 'url'=>array('/pedido'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
+						array('label'=>'', 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
+						array('label'=>'Ver mis Pedidos >', 'url'=>array('/pedido')),
+					),
+				),
+				array(
+					'label'=>'Idiomas   <img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/drop.png" />',
+					'url'=>array('/libro'),
+					'linkoptions'=>array('id'=>'menuIdiomas'),
+					'itemoptions'=>array('id'=>'itemIdiomas'),
+					'items'=>array(
+						array('label'=>'Inglés', 'url'=>array('libro/view&id='.rand(1,9))),
+						array('label'=>'Español', 'url'=>array('libro/view&id=1')),
+					),
+				),
 				array('label'=>'Visor de Gestión', 'url'=>array('/site/page', 'view'=>'indexadmin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')	|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'gerente')),
 			),
 		)); ?>

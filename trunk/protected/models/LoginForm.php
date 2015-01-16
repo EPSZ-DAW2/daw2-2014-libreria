@@ -30,9 +30,8 @@ class LoginForm extends CFormModel
 		);
 	}
 
-	/**
-	 * Declares attribute labels.
-	 */
+
+	 
 	public function attributeLabels()
 	{
 		return array(

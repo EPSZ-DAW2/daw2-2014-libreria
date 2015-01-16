@@ -50,7 +50,7 @@
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/info.png" />   Ayuda', 'url'=>array('/site/page', 'view'=>'ayuda')),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/separador.png" />', 'url'=>array('')),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/carro.png" />   Mi Carrito', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/carro.png" />   Mi Carrito', 'url'=>array(''), 'visible'=>Yii::app()->user->checkAccess( 'cliente')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'libreria')),
+				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/carro.png" />   Mi Carrito', 'url'=>array('/pedido/carrito'), 'visible'=>Yii::app()->user->checkAccess( 'cliente')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'libreria')),
 			),
 		)); ?>
 	</div>

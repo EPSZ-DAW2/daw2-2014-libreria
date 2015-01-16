@@ -18,6 +18,41 @@ class RegistroForm extends CFormModel
 					'message' => 'Este campo es obligatorio'
 			),
 			array(
+					'email',
+					'email',
+					'message' => 'Mensaje, el formato de email es incorrecto'
+			),			
+			array(
+					'password',
+					'match',
+					'pattern' => '/^[a-zA-Z0-9]{7,12}+$/i',
+					'message' => 'Mensaje, solamente mayúsculas, minúsculas y números, entre 7 y 12 caracteres.'
+			),
+			array(
+					'nombre',
+					'match',
+					'pattern' => '/^[a-z0-9áéíóú\_]+$/i',
+					'message' => 'Mensaje, solo letras, números y guiones bajos'
+			),
+			array(
+					'apellidos',
+					'match',
+					'pattern' => '/^[a-z0-9áéíóú\-]+$/i',
+					'message' => 'Mensaje, solo letras, números y guiones medios'
+			),
+			array(
+					'nif',
+					'match',
+					'pattern' => '/^[0-9]{8}[A-Z]{1}+$/i',
+					'message' => 'Mensaje, DNI con formato 12345678Z'
+			),
+			array(
+					'telefono',
+					'match',
+					'pattern' => '/^[0-9]{9,12}+$/i',
+					'message' => 'Mensaje, entre 9 y 12 números'
+			),
+			array(
 				'repetir_password',
 				'compare',
 				'compareAttribute'=>'password',

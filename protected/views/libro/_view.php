@@ -7,7 +7,7 @@
 
 	<div id="bloque_comprar">
 		<?php
-		echo CHtml::form(Yii::app()->createUrl('carrito'),'get');
+		echo CHtml::form(Yii::app()->createUrl('/pedido/carrito'),'get');
 			echo CHtml::hiddenField('IdLibro',$data->IdLibro);
 			echo CHtml::submitButton('Comprar');
 		echo CHtml::endForm();

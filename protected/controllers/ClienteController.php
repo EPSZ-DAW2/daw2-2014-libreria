@@ -29,16 +29,13 @@ class ClienteController extends Controller
 		return array(
 			array('allow',  // allow all: sysadmin y admin
 				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete', 'search'),
-				'roles'=>array('sysadmin, admin'),
+				'roles'=>array('sysadmin', 'admin', 'gerente', 'vendedor'),
 			),
 			array('allow',  // allow all: sysadmin y admin
 				'actions'=>array('index','view'),
 				'roles'=>array('cliente'),
 			),
-			array('allow',  // allow all: sysadmin y admin
-				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete'),
-				'roles'=>array('vendedor'),
-			),
+			array('deny'),
 		);
 	}
 
@@ -119,10 +116,15 @@ class ClienteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cliente');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$filtro= new CDbCriteria();
+
+		if (Yii::app()->user->checkAccess('cliente')) {
+			$id=Yii::app()->user->id;
+			$filtro->compare('IdCliente', $id);
+		}
+
+		$dataProvider=new CActiveDataProvider('Cliente', array('criteria'=>$filtro,));
+		$this->render('index',array('dataProvider'=>$dataProvider,));
 	}
 
 	/**

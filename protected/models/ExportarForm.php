@@ -22,20 +22,20 @@ class ExportarForm extends CFormModel
 	public $nacionalidad=true;
 	public $pedido=true;
 	public $usuario=true;
-	
+
 	//Botón de radio para escoger SQL o XML
 	public $opcion;
-	
+
 	//Reglas del modelo
 	public function rules()
 	{
 		return array(
 			array('authassignment, authitem, authitemchild, autor, categoria, cliente, configuracion, editorial, estado, forma_pago, idioma, libro, libro_autor, libro_categoria, linea, nacionalidad, pedido, usuario', 'boolean'),
 			array('opcion', 'safe'),
-			
-		);	
+
+		);
 	}
-	
+
 	//Función para validar los botones de check. Deberá estar activado al menos uno
 	public function validarTablas()
 	{

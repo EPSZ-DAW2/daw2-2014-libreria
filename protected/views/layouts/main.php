@@ -35,11 +35,14 @@
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/separador.png" />', 'url'=>array('')),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/registro.png" />   Regístrate', 'url'=>array('/site/registro'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/ajustes.png" />   Configuración', 'url'=>array('/site/configuracion'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'vendedor')|| Yii::app()->user->checkAccess( 'libreria')),
-				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/ajustes.png" />   Mi cuenta', 'url'=>array('/site/configuracion'), 'visible'=> Yii::app()->user->checkAccess( 'cliente')),
+				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/ajustes.png" />   Mi cuenta', 'url'=>array('/cliente'), 'visible'=> Yii::app()->user->checkAccess( 'cliente')),
+				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/separador.png" />', 'url'=>array(''), 'visible'=> Yii::app()->user->checkAccess( 'sysadmin') || Yii::app()->user->checkAccess( 'admin')),
+				array('label'=>'<img src="'.Yii::app()->request->baseUrl.'/images/iconos/varios/lock.png" />   Copia de Seguridad', 'url'=>array('site/page', 'view' => 'copia_seguridad'), 'visible'=> Yii::app()->user->checkAccess( 'sysadmin') || Yii::app()->user->checkAccess( 'admin')),
+
 			),
 		)); ?>
 	</div>
-	
+
 	<!--Menu superior derecho-->
 	<div id="mainmenu2">
 	<?php $this->widget('zii.widgets.CMenu',array(
@@ -51,10 +54,10 @@
 			),
 		)); ?>
 	</div>
-	
+
 	<div id="clear">
 	</div>
-	
+
 	<div id="mainmenu" style="cursor: pointer;" onclick="document.location.href='index.php';">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -131,20 +134,20 @@
 			),
 		)); ?>
 	</div><!-- mainmenu -->
-	
+
 	<div id="busqueda_libros">
         <?php echo CHtml::form(Yii::app()->createUrl('libro/search'),'get') ?>
             <?php echo CHtml::textField('search_key'); ?>
             <?php echo CHtml::submitButton('Busqueda Por Título'); ?>
         <?php echo CHtml::endForm() ?>
     </div>
-	
+
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-	
+
 	<?php echo $content; ?>
 	<div class="clear"></div>
 

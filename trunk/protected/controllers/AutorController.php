@@ -29,16 +29,17 @@ class AutorController extends Controller
 		return array(
 			array('allow',  // allow all: sysadmin y admin
 				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete', 'search'),
-				'roles'=>array('sysadmin, admin'),
+				'roles'=>array('sysadmin', 'admin', 'gerente', 'libreria', 'vendedor'),
 			),
 			array('allow',  // allow all: sysadmin y admin
 				'actions'=>array('index','view'),
 				'roles'=>array('cliente'),
 			),
-			array('allow',  // allow all: sysadmin y admin
-				'actions'=>array('index','view', 'create', 'update', 'admin', 'delete'),
-				'roles'=>array('libreria'),
+			array('allow',
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
 			),
+			array('deny'),
 		);
 	}
 

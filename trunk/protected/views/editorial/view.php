@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Editoriales', 'url'=>array('index')),
-	array('label'=>'Crear Editorial', 'url'=>array('create')),
-	array('label'=>'Actualizar Editorial', 'url'=>array('update', 'id'=>$model->IdEditorial)),
-	array('label'=>'Borrar Editorial', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdEditorial),'confirm'=>'¿Estás seguro de que desea borrar esta editorial?')),
-	array('label'=>'Gestionar Editoriales', 'url'=>array('admin')),
+	array('label'=>'Crear Editorial', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Actualizar Editorial', 'url'=>array('update', 'id'=>$model->IdEditorial), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Borrar Editorial', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdEditorial),'confirm'=>'¿Estás seguro de que desea borrar esta editorial?'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Gestionar Editoriales', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
 ?>
 

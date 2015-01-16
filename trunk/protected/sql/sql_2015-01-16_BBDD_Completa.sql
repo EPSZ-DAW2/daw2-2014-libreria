@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-12-2014 a las 19:25:17
+-- Tiempo de generación: 16-01-2015 a las 19:25:42
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -152,7 +152,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 
 INSERT INTO `cliente` (`IdCliente`, `DomicilioFacturacion`, `CPFacturacion`, `PoblacionFacturacion`, `ProvinciaFacturacion`) VALUES
 (7, 'C/Prueba, Nº1, 1ºB', 49021, 'Zamora', 'Zamora'),
-(8, 'C/Domicilio, Nº2, 2ºC', 37005, 'Salamanca', 'Salamanca');
+(8, 'C/Domicilio, Nº2, 2ºC', 37005, 'Salamanca', 'Salamanca'),
+(9, 'C/Cliente, 5, 5ºA', 49005, 'Zamora', 'Zamora');
 
 -- --------------------------------------------------------
 

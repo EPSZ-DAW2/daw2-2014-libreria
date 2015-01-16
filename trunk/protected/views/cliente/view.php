@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Clientes', 'url'=>array('index')),
-	array('label'=>'Crear Cliente', 'url'=>array('create')),
-	array('label'=>'Actualizar Cliente', 'url'=>array('update', 'id'=>$model->IdCliente)),
-	array('label'=>'Borrar Cliente', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdCliente),'confirm'=>'¿Estás seguro de que desea borrar este autor?')),
-	array('label'=>'Gestionar Clientes', 'url'=>array('admin')),
+	array('label'=>'Crear Cliente', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Actualizar Cliente', 'url'=>array('update', 'id'=>$model->IdCliente), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Borrar Cliente', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdCliente),'confirm'=>'¿Estás seguro de que desea borrar este autor?'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Gestionar Clientes', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
 ?>
 

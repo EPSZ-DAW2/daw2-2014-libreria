@@ -5,12 +5,12 @@
 $this->breadcrumbs=array(
 	'Autores',
 );
-
 $this->menu=array(
-	array('label'=>'Crear Autor', 'url'=>array('create')),
-	array('label'=>'Gestionar Autores', 'url'=>array('admin')),
+	array('label'=>'Crear Autor', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Gestionar Autores', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
 ?>
+
 
 <h1>Autores</h1>
 

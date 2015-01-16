@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Editorial', 'url'=>array('create')),
-	array('label'=>'Gestionar Editoriales', 'url'=>array('admin')),
+	array('label'=>'Crear Editorial', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Gestionar Editoriales', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
 ?>
 

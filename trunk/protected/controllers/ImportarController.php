@@ -8,18 +8,18 @@ class ImportarController extends Controller
 			array('allow',
 				'actions'=>array('index'),
 				'roles'=>array('sysadmin', 'admin'),
-			),			
+			),
 			array('deny'),
 		);
 	}
-	
+
 	public function filters()
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
 		);
 	}
-	
+
 
 	public function actionIndex(){
 		$modelo=new ImportarForm;
@@ -28,8 +28,8 @@ class ImportarController extends Controller
 			$modelo->scenario = 'conArchivo';
         }
 		elseif(isset($_POST['estructura'])){
-			CopiaDeSeguridad::importarSQL(Yii::app()->basePath . '/sql/libreria.sql');
-			Yii::app()->user->setFlash('informacion','Se ha importado correctamente la estructura de la base de datos');
+			CopiaDeSeguridad::importarSQL(Yii::app()->basePath . '/extensions/seguridad/restructurar_libreria.sql');
+			Yii::app()->user->setFlash('informacion','Se ha restructurado correctamente la base de datos');
         }
 		elseif(isset($_POST['importarDatos'])){
 			//Recogemos la instancia del archivo subido
@@ -37,11 +37,11 @@ class ImportarController extends Controller
 			//Guardamos en variables la ruta del archivo y la extensión
 			$ruta=Yii::app()->basePath . '/runtime/'.strtolower($modelo->archivo);
 			$archivoPartido=explode(".", strtolower($modelo->archivo));
-			$extension = end($archivoPartido); 
-			
+			$extension = end($archivoPartido);
+
 			//Subimos el archivo al servidor
 			$modelo->archivo->saveAs($ruta);
-			
+
 			//Importamos el archivo eligiendo si es xml o sql
 			if($extension=='xml'){
 				if(CopiaDeSeguridad::importarXML($ruta,$modelo->foraneas))

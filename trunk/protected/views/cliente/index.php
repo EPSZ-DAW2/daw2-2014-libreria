@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Cliente', 'url'=>array('create')),
-	array('label'=>'Gestionar Cliente', 'url'=>array('admin')),
+	array('label'=>'Crear Cliente', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
+	array('label'=>'Gestionar Cliente', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
 ?>
 

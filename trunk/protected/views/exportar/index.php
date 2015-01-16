@@ -6,36 +6,36 @@
 
 <div class="yiiForm">
 	<?php echo CHtml::beginForm(); ?>
-	
+
 	<h5>Seleccione las tablas que van a ser exportadas:</h5>
-	
+
 	<!--Botones de check de las tablas-->
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'authassignment'); ?>
 	Authassignment<br/>
 	</div>
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'authitem'); ?>
 	Authitem<br/>
 	</div>
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'authitemchild'); ?>
 	Authitemchild<br/>
 	</div>
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'autor'); ?>
 	Autor<br/>
 	</div>
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'categoria'); ?>
 	Categoria<br/>
 	</div>
-	
+
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'cliente'); ?>
 	Cliente<br/>
@@ -58,7 +58,7 @@
 
 	<div class="simple">
 	<?php echo CHtml::activeCheckBox($exportar,'forma_pago'); ?>
-	Facturas<br/>
+	Forma Pago<br/>
 	</div>
 
 	<div class="simple">
@@ -102,18 +102,18 @@
 	</div>
 
 	</br><h5>Elija el formato:</h5>
-	
+
 	<!--Botones de radio para el tipo de archivo-->
 	<div class="simple">
 			<?php echo  CHtml::activeRadioButton($exportar,'opcion',array('value'=>0)) . 'Exportar en XML';
 				  echo '<br/>';
 				  echo  CHtml::activeRadioButton($exportar,'opcion',array('value'=>1)) . 'Exportar en SQL'; ?>
 	</div></br>
-	
+
 	<div class="action">
 	<?php echo CHtml::submitButton('Exportar'); ?>
 	</div>
-	 
+
 	<?php echo CHtml::endForm(); ?>
 </div>
 

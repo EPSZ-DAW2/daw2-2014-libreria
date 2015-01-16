@@ -117,6 +117,17 @@ class SiteController extends Controller
 			if(!$model->validate())
 				$model->addError('Repetir password', 'Error al enviar el formulario');
 			else {
+					$guardar = new Consultas_registroDB;
+					$guardar->guardar_usuario(
+						$model->email,
+						$model->password,
+						$model->nombre,
+						$model->apellidos,
+						$model->nif,
+						$model->telefono
+						);
+						
+						
 					$mail=Yii::app()->Smtpmail;
 					$mail->SetFrom('daw2giisi@gmail.com','Libreria Daw');
 					$mail->Subject='Registro de Nuevo Usuario';
@@ -129,8 +140,11 @@ class SiteController extends Controller
 					else 
 					{
 						Yii::app()->user->setFlash('registro','El correo ha sido enviado!');	
-						$model = new RegistroForm;						
+						$model = new RegistroForm;	
 					}
+					
+					
+					
 			
 			}
 		}

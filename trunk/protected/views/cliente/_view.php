@@ -24,6 +24,13 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ProvinciaFacturacion')); ?>:</b>
 	<?php echo CHtml::encode($data->ProvinciaFacturacion); ?>
 	<br />
+	
+</div>
 
+<div class="view">
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ModificarDatos')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode("Cambiar"), array('view', 'id'=>$data->IdCliente)); ?>
+	<br />
+	
 </div>

@@ -9,6 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Clientes', 'url'=>array('index')),
+	array('label'=>'Modificar Datos', 'url'=>array('view&id='. $model->usuario->IdUsuario.'#modificar')),
 	array('label'=>'Crear Cliente', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 	array('label'=>'Actualizar Cliente', 'url'=>array('update', 'id'=>$model->IdCliente), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 	array('label'=>'Borrar Cliente', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdCliente),'confirm'=>'¿Estás seguro de que desea borrar este autor?'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
@@ -42,16 +43,17 @@ $this->menu=array(
 )); ?>
 
 <br/>
-<h1>Editar datos:</h1>
+<h1>Modificar datos:</h1>
 
-<div class="form">
+<div class="form" id="modificar">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'cliente-form',
+	'id'=>'RegistroForm',
 	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'DomicilioFacturacion'); ?>
@@ -78,7 +80,7 @@ $this->menu=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar Cambios' : 'Guardar Cambios'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -1,10 +1,4 @@
 <?php
-session_start();
-//unset($_SESSION['carrito']);
-if(!isset($_SESSION['carrito'])) {
-	$_SESSION['carrito'] = array();
-	$_SESSION['total_carrito'] = 0;
-}
 
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/framework/yii.php';

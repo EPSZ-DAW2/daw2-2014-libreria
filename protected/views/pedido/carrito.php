@@ -76,10 +76,14 @@ if(Yii::app()->user->getState('carrito')){
 				}else{
 					$pedido->DomicilioEnvio=null;
 				}
+				
+				echo CHtml::submitButton('Seguir Comprando', array('submit' => $this->createUrl('/libro')));
+				?></br></br><?php
 				echo CHtml::form(Yii::app()->createUrl('/pedido/datos'),'post');
 				Yii::app()->user->setState('pedido',$pedido);
-				echo CHtml::submitButton('Finalizar Compra');
+				echo CHtml::submitButton(' Finalizar Compra ');
 				echo CHtml::endForm();
+				
 			}
 			
 		}

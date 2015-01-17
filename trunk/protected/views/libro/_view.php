@@ -7,11 +7,10 @@
 
 	<div id="bloque_comprar">
 		<?php
-		//echo CHtml::form(Yii::app()->createUrl('/pedido/carrito'),'get');
-			//echo CHtml::hiddenField('IdLibro',$data->IdLibro);
-			//echo CHtml::submitButton('Comprar');
-		//echo CHtml::endForm();
-		echo CHtml::link(CHtml::encode('Añadir al Carrito'), array('carrito/agregarProductoCarrito', 'id'=>$data->IdLibro));
+		echo CHtml::form(Yii::app()->createUrl('/pedido/carrito'),'get');
+			echo CHtml::hiddenField('IdLibro',$data->IdLibro);
+			echo CHtml::submitButton('Comprar');
+		echo CHtml::endForm();
 		?>
 	</div>
 	

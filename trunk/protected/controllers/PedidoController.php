@@ -28,7 +28,7 @@ class PedidoController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','carrito','datos'),
 				'roles'=>array('admin','gerente','libreria','sysadmin','vendedor','cliente'),
 			),/*
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -70,13 +70,11 @@ class PedidoController extends Controller
 			'model'=>$pedido,
 			'dataProvider' => $dataProvider,
 		));
-		
-		
-		
 		/*
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));*/
+		));
+		*/
 	}
 
 	/**
@@ -146,16 +144,96 @@ class PedidoController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Pedido');
-			if(Yii::app()->user->checkAccess( 'cliente')){
-				$dataProvider->setCriteria(array(
-				'condition'=>'IdCliente=:id',
-				'params'=>array( ':id'=>Yii::app()->user->id
-				),
-			));
-			}
+		if(Yii::app()->user->checkAccess( 'cliente')){
+			$dataProvider->setCriteria(array(
+			'condition'=>'IdCliente=:id',
+			'params'=>array( ':id'=>Yii::app()->user->id
+			),
+		));
+		}
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+	
+	public function actionCarrito(){
+		$model= array();
+		
+		if(isset($_GET['IdLibro'])){
+			if(Yii::app()->user->getState('carrito')){
+				$model=Yii::app()->user->getState('carrito');
+			}			
+			if($model_libro= Libro::model()->findByPk($_GET['IdLibro'])){
+				if(isset($model[$model_libro->IdLibro])){
+					if(isset($_GET['Borrar'])){
+						if(isset($model[$model_libro->IdLibro])){
+							unset($model[$model_libro->IdLibro]);
+							Yii::app()->user->setState('carrito',$model);
+						}
+					}elseif(isset($_GET['Restar'])){
+						if(isset($model[$model_libro->IdLibro])){
+							$model[$model_libro->IdLibro]->Cantidad--;
+							$model[$model_libro->IdLibro]->Importe=($model[$model_libro->IdLibro]->Precio)*($model[$model_libro->IdLibro]->Cantidad);	
+							if($model[$model_libro->IdLibro]->Cantidad<=0){
+								unset($model[$model_libro->IdLibro]);
+								Yii::app()->user->setState('carrito',$model);
+							}
+						}
+					}else{
+						$model[$model_libro->IdLibro]->Cantidad++;
+						$model[$model_libro->IdLibro]->Importe=($model[$model_libro->IdLibro]->Precio)*($model[$model_libro->IdLibro]->Cantidad);			
+					}
+				}else{
+					$model[$model_libro->IdLibro]= new Linea;
+					$model[$model_libro->IdLibro]->IdLibro=$model_libro->IdLibro;
+					$model[$model_libro->IdLibro]->Cantidad=1;
+					$model[$model_libro->IdLibro]->Precio=$model_libro->Precio;
+					$model[$model_libro->IdLibro]->Importe=($model[$model_libro->IdLibro]->Precio)*($model[$model_libro->IdLibro]->Cantidad);
+					Yii::app()->user->setState('carrito',$model);
+				}
+			}
+		}
+		$this->render('carrito');
+	}
+	
+	public function actionDatos(){
+		$model=new Pedido;
+		
+		if(Yii::app()->user->getState('pedido')){
+			$model= Yii::app()->user->getState('pedido');
+		}
+
+		if(isset($_POST['Pedido']))
+		{
+			$model->attributes=$_POST['Pedido'];
+			if($model->validate()){
+				if(!$model_cliente= Cliente::model()->findByPk($model->IdCliente)){
+					$model_cliente= new Cliente;
+					$model_cliente->IdCliente=$model->IdCliente;
+					$model_cliente->DomicilioFacturacion=$model->DomicilioEnvio;
+					$model_cliente->CPFacturacion=$model->CPEnvio;
+					$model_cliente->PoblacionFacturacion=$model->PoblacionEnvio;
+					$model_cliente->ProvinciaFacturacion=$model->ProvinciaEnvio;
+					$model_cliente->Save();
+				}
+				if($model->save()){
+					if(Yii::app()->user->getState('carrito')){
+						$productos= Yii::app()->user->getState('carrito');
+						foreach($productos as $model_linea){
+							$model_linea->IdLinea=null;
+							$model_linea->IdPedido=$model->IdPedido;
+							$model_linea->Save();
+						}
+						unset(Yii::app()->user->carrito);
+						unset(Yii::app()->user->pedido);
+						$this->redirect(array('view','id'=>$model->IdPedido));
+					}
+				}
+			}
+		}
+		$this->render('datos',array(
+					'model'=>$model,
+				));
 	}
 
 	/**

@@ -71,6 +71,7 @@ class Cliente extends CActiveRecord
 			'CPFacturacion' => 'CP Facturación',
 			'PoblacionFacturacion' => 'Población Facturación',
 			'ProvinciaFacturacion' => 'Provincia Facturación',
+			'ModificarDatos' => 'Modificar datos',			
 		);
 	}
 

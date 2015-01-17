@@ -15,10 +15,11 @@ $this->breadcrumbs=array(
 	Precio: <?php echo number_format($model->Precio, 2, ',', ' ')."€";?>
 	<p style="font-size: 12px;">Gastos de Envio para España: <?php echo number_format(3.55, 2, ',', ' ')."€";?></p>
 	<?php
-		echo CHtml::form(Yii::app()->createUrl('/pedido/carrito'),'get');
-		echo CHtml::hiddenField('IdLibro',$model->IdLibro);
-		echo CHtml::submitButton('Comprar');
-		echo CHtml::endForm();
+		//echo CHtml::form(Yii::app()->createUrl('/pedido/carrito'),'get');
+		//echo CHtml::hiddenField('IdLibro',$model->IdLibro);
+		//echo CHtml::submitButton('Comprar');
+		//echo CHtml::endForm();
+		echo CHtml::link(CHtml::encode('Añadir al Carrito'), array('carrito/agregarProductoCarrito', 'id'=>$model->IdLibro));
 	?>
 </div>
 <div id="datos_libro">

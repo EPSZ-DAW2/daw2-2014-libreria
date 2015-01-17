@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Pedido', 'url'=>array('index')),
-	array('label'=>'Manage Pedido', 'url'=>array('admin')),
+	array('label'=>'Listar Pedidos', 'url'=>array('index')),
+	array('label'=>'Gestionar Pedidos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Pedido</h1>
+<h1>Crear Pedido</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

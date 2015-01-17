@@ -4,6 +4,10 @@
 ?>
 
 <div class="view">
+<!--
+		Cliente y gestión
+		if (Yii::app()->user->checkAccess( 'sysadmin') || Yii::app()->user->checkAccess( 'admin') || Yii::app()->user->checkAccess( 'vendedor') || Yii::app()->user->checkAccess( 'gerente')){
+-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('IdPedido')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->IdPedido), array('view', 'id'=>$data->IdPedido)); ?>

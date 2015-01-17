@@ -108,11 +108,39 @@ class Pedido extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+	
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+
+		$criteria->compare('IdPedido',$this->IdPedido);
+		$criteria->compare('Serie',$this->Serie);
+		$criteria->compare('Numero',$this->Numero);
+		$criteria->compare('Fecha',$this->Fecha,true);
+		$criteria->compare('IdCliente',$this->IdCliente);
+		$criteria->compare('IdPago',$this->IdPago);
+		$criteria->compare('IVA',$this->IVA);
+		$criteria->compare('GastosEnvio',$this->GastosEnvio);
+		$criteria->compare('Pagado',$this->Pagado);
+		$criteria->compare('IdEstado',$this->IdEstado);
+		$criteria->compare('DomicilioEnvio',$this->DomicilioEnvio,true);
+		$criteria->compare('CPEnvio',$this->CPEnvio);
+		$criteria->compare('PoblacionEnvio',$this->PoblacionEnvio,true);
+		$criteria->compare('ProvinciaEnvio',$this->ProvinciaEnvio,true);
+		$criteria->compare('TelefonoEnvio',$this->TelefonoEnvio);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	public function search2($param = array())
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria($param);
 
 		$criteria->compare('IdPedido',$this->IdPedido);
 		$criteria->compare('Serie',$this->Serie);

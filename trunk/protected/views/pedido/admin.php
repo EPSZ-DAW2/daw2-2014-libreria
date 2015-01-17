@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Pedido', 'url'=>array('index')),
-	array('label'=>'Create Pedido', 'url'=>array('create')),
+	array('label'=>'Listar Pedidos', 'url'=>array('index')),
+	//array('label'=>'Crear Pedido', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,44 +26,55 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Pedidos</h1>
+<h1>Gestionar Pedidos</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link('Búsqueda Avanzada','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'pedido-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'IdPedido',
-		'Serie',
-		'Numero',
-		'Fecha',
-		'IdCliente',
-		'IdPago',
-		/*
-		'IVA',
-		'GastosEnvio',
-		'Pagado',
-		'IdEstado',
-		'DomicilioEnvio',
-		'CPEnvio',
-		'PoblacionEnvio',
-		'ProvinciaEnvio',
-		'TelefonoEnvio',
-		*/
-		array(
-			'class'=>'CButtonColumn',
+<?php
+	if(Yii::app()->user->checkAccess( 'cliente'))
+	{
+		$this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'pedido-grid',
+		'dataProvider'=>$model->search2(array(
+					'condition'=>'IdCliente=:id',
+					'params'=>array( ':id'=>Yii::app()->user->id),)),
+		'filter'=>$model,
+		'columns'=>array(
+			'IdPedido',
+			'Serie',
+			'Numero',
+			'Fecha',
+			'estado.Nombre',
+			array(
+				'class'=>'CButtonColumn',
+			),
 		),
-	),
-)); ?>
+	)); 
+	
+	} else {
+
+		$this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'pedido-grid',
+		'dataProvider'=>$model->search(),
+		'filter'=>$model,
+		'columns'=>array(
+			'IdPedido',
+			'Serie',
+			'Numero',
+			'Fecha',
+			'IdCliente',
+			'usuario.Nombre',
+			'Pagado',
+			'estado.Nombre',
+			array(
+				'class'=>'CButtonColumn',
+			),
+		),
+	)); 
+}
+?>

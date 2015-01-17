@@ -2,6 +2,7 @@
 /* @var $this PedidoController */
 /* @var $model Pedido */
 /* @var $form CActiveForm */
+/* VERSIÓN CLIENTE */
 ?>
 
 <div class="form">
@@ -19,61 +20,16 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Serie'); ?>
-		<?php echo $form->textField($model,'Serie'); ?>
-		<?php echo $form->error($model,'Serie'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Numero'); ?>
-		<?php echo $form->textField($model,'Numero'); ?>
-		<?php echo $form->error($model,'Numero'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Fecha'); ?>
-		<?php echo $form->textField($model,'Fecha'); ?>
-		<?php echo $form->error($model,'Fecha'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'IdCliente'); ?>
-		<?php echo $form->textField($model,'IdCliente'); ?>
-		<?php echo $form->error($model,'IdCliente'); ?>
-	</div>
-	
+	<h2>Cliente: <?php echo $model->usuario->Nombre.' '.$model->usuario->Apellidos;?></h2>
+	<hr>
 	<div class="row">
 		<?php echo $form->labelEx($model,'Forma Pago'); ?>
 		<?php echo $form->dropDownList($model,'IdPago',CHtml::listData(FormaPago::model()->findAll(array('order' => 'Nombre')),'IdPago','Nombre'), array('prompt' => 'Seleccione una Forma de Pago')); ?>
 		<?php //echo $form->textField($model,'IdPago'); ?>
 		<?php echo $form->error($model,'IdPago'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'IVA'); ?>
-		<?php echo $form->textField($model,'IVA'); ?>
-		<?php echo $form->error($model,'IVA'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'GastosEnvio'); ?>
-		<?php echo $form->textField($model,'GastosEnvio'); ?>
-		<?php echo $form->error($model,'GastosEnvio'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Pagado'); ?>
-		<?php echo $form->textField($model,'Pagado'); ?>
-		<?php echo $form->error($model,'Pagado'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Estado'); ?>
-		<?php //echo $form->textField($model,'IdEstado'); ?>
-		<?php echo $form->dropDownList($model,'IdEstado',CHtml::listData(Estado::model()->findAll(array('order' => 'Nombre')),'IdEstado','Nombre'), array('prompt' => 'Seleccione un Estado')); ?>
-		<?php echo $form->error($model,'IdEstado'); ?>
-	</div>
+	
+	</br><h3>Estado del Pedido: <?php echo $model->estado->Nombre;?></h3>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'DomicilioEnvio'); ?>

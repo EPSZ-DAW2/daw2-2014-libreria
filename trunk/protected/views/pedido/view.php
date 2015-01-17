@@ -8,15 +8,16 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Pedido', 'url'=>array('index')),
-	array('label'=>'Create Pedido', 'url'=>array('create')),
-	array('label'=>'Update Pedido', 'url'=>array('update', 'id'=>$model->IdPedido)),
-	array('label'=>'Delete Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdPedido),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Pedido', 'url'=>array('admin')),
+	array('label'=>'Listar Pedidos', 'url'=>array('index')),
+	//array('label'=>'Create Pedido', 'url'=>array('create')),
+	array('label'=>'Modificar Pedido', 'url'=>array('update', 'id'=>$model->IdPedido)),
+	array('label'=>'Borrar Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdPedido),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Gestionar Pedidos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Pedido #<?php echo $model->IdPedido; $gastos=$model->GastosEnvio?></h1>
+<h1>Pedido nº <?php echo $model->IdPedido.'-'.$model->Serie.'-'.$model->Numero; 
+$gastos=$model->GastosEnvio?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -48,20 +49,18 @@ $this->menu=array(
 	),
 )); ?>
 <br/>
-<h2>Libros<?php $lineasp = $model->lineas; $preciototal=0; ?></h2>
-<?php
+<?php $lineasp = $model->lineas; $preciototal=0; 
 	foreach($lineasp as $lineas) {
-			echo '<hr />';
-			echo 'ISBN:'.$lineas->libro->ISBN.'<br/>';
-			echo 'Titulo:'.$lineas->libro->Titulo.'<br/>';
-			echo 'Cantidad:'.$lineas->Cantidad.'<br/>';
-			echo 'Precio:'.$lineas->Precio.'<br/>'; 
 			$preciototal=$preciototal+($lineas->Cantidad*$lineas->Precio); //Calcula importe total
-			echo 'Importe:'.$lineas->Importe.'<br/>';
-			echo '<br/><hr />';
-        
 		}
 ?>
-<br/>
-<h2>Importe total del pedido:  <?php echo ($preciototal+$gastos).'€'; ?></h2>
+<h2 style="margin:0.5em 0;">Libros del Pedido</h2>
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=> $dataProvider,
+	'itemView'=>'_linea',
+	'emptyText'=>'No existen libros en este pedido',
+	'template'=>"{sorter}\n{items}\n<div style='float:left;'>{summary}</div>\n{pager}",
+)); ?>
+<br/><br/>
+<h2>Importe total del pedido:  <?php echo number_format($preciototal+$gastos, 2, ',', ' ').'€'; ?></h2>
 <br/>

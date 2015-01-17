@@ -28,6 +28,8 @@
 			$Criteria->limit = 1;
 			if($model_pedido= Pedido::model()->find($Criteria)){
 				echo $form->hiddenField($model,'Numero',array('value'=>$model_pedido->Numero+1));
+			}else{
+				echo $form->hiddenField($model,'Numero',array('value'=>'12345678'));
 			}
 		?>
 		<?php echo $form->hiddenField($model,'Serie',array('value'=>'2015')); ?>

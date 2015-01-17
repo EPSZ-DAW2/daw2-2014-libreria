@@ -505,6 +505,20 @@ ALTER TABLE `pedido`
   ADD CONSTRAINT `fk_pedido-forma_pago` FOREIGN KEY (`IdPago`) REFERENCES `forma_pago` (`IdPago`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
 
+INSERT INTO `estado` (`IdEstado`, `Nombre`) VALUES
+(1, 'Pendiente'),
+(2, 'En proceso'),
+(3, 'Enviado'),
+(4, 'Entregado');
+
+INSERT INTO `forma_pago` (`IdPago`, `Nombre`) VALUES
+(1, 'Master Card'),
+(2, 'Visa'),
+(3, 'American Express'),
+(4, 'PayPal'),
+(5, 'Transferencia bancaria'),
+(6, 'Contra reembolso');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

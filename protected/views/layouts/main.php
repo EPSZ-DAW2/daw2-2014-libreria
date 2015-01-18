@@ -99,11 +99,10 @@
 					'url'=>array('/editorial'),
 					'linkoptions'=>array('id'=>'menuEditoriales'),
 					'itemoptions'=>array('id'=>'itemEditoriales'),
-					'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente'),
 					'items'=>array(
 						array('label'=>'Registrar Editorial', 'url'=>array('editorial/create'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
 						array('label'=>'Listar Editoriales', 'url'=>array('editorial/admin'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'libreria')|| Yii::app()->user->checkAccess( 'gerente')),
-						array('label'=>'Consultar Editoriales', 'url'=>array('/editorial'), 'visible'=>Yii::app()->user->checkAccess( 'sysadmin')|| Yii::app()->user->checkAccess( 'admin')|| Yii::app()->user->checkAccess( 'gerente')|| Yii::app()->user->checkAccess( 'libreria')),
+						array('label'=>'Consultar Editoriales', 'url'=>array('/editorial')),
 					),
 				),
 				array(

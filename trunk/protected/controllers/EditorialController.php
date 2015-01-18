@@ -35,6 +35,10 @@ class EditorialController extends Controller
 				'actions'=>array('index','view'),
 				'roles'=>array('cliente'),
 			),
+			array('allow',
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
 			array('deny'),
 		);
 	}

@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 	'Autores'=>array('index'),
 	$model->Nombre,
 );
+if(!Yii::app()->user->isGuest){
 $this->menu=array(
 	array('label'=>'Listar Autores', 'url'=>array('index')),
 	array('label'=>'Crear Autor', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
@@ -13,6 +14,7 @@ $this->menu=array(
 	array('label'=>'Borrar Autor', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdAutor),'confirm'=>'¿Estás seguro de que desea borrar este autor?'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 	array('label'=>'Gestionar Autores', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
+}
 ?>
 
 <h1>Autor: <?php echo $model->Nombre; ?></h1>

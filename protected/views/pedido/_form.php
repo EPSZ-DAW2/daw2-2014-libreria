@@ -8,26 +8,32 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'pedido-form',
+	'focus'=> array($model,'IdPedido'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'enableAjaxValidation'=>true,
 )); ?>
+
+<?php //echo CHtml::beginForm(); ?>
 
 	<p class="note"><span class="required">*</span>Campos obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model,$linea); ?>
+	<?php //echo CHtml::errorSummary(array($model,$linea)); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Serie'); ?>
-		<?php echo $form->textField($model,'Serie'); ?>
+		<?php echo $form->textField($model,'Serie',array('readonly' => true)); ?>
 		<?php echo $form->error($model,'Serie'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Numero'); ?>
-		<?php echo $form->textField($model,'Numero'); ?>
+		<?php echo $form->textField($model,'Numero',array('readonly' => true)); ?>
 		<?php echo $form->error($model,'Numero'); ?>
 	</div>
 
@@ -39,7 +45,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'IdCliente'); ?>
-		<?php echo $form->textField($model,'IdCliente'); ?>
+		<?php echo $form->textField($model,'IdCliente',array('readonly' => true)); ?>
 		<?php echo $form->error($model,'IdCliente'); ?>
 	</div>
 	
@@ -105,6 +111,7 @@
 		<?php echo $form->error($model,'TelefonoEnvio'); ?>
 	</div>
 	<hr><h2>Libros del Pedido</h2><hr>
+	<?php /*?>
 	<?php $lineas = $model->lineas;  
 	foreach($lineas as $pedidoL) {?>
 	<div class="row">
@@ -131,30 +138,90 @@
 		<?php echo $form->textField($pedidoL,'Importe'); ?>
 		<?php echo $form->error($pedidoL,'Importe'); ?>
 	</div>
-	<hr><hr>
-
-<?php
+	<?php ?>
 	
-	}
-?>
-	<?php //$pedidoL = Linea::model()->findByPk($model->IdPedido); 
-	                    /*foreach ($_SESSION['carrito'] as $key => $producto) {
-                        $pedidoLinea = new Linea;
+	<div class="row">
+		<?php echo $form->labelEx($linea,'IdLinea'); ?>
+		<?php echo $form->textField($linea,'IdLinea'); ?>
+		<?php echo $form->error($linea,'IdLinea'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($linea,'Titulo'); ?>
+		<?php echo $form->dropDownList($linea,'IdLibro',CHtml::listData(Libro::model()->findAll(array('order' => 'Titulo')),'IdLibro','Titulo'), array('prompt' => 'Seleccione un Libro')); ?>
+		<?php //echo $form->textField($pedidoL,'IdLibro'); ?>
+		<?php echo $form->error($linea,'IdLibro'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($linea,'Cantidad'); ?>
+		<?php echo $form->textField($linea,'Cantidad'); ?>
+		<?php echo $form->error($linea,'Cantidad'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($linea,'Precio'); ?>
+		<?php echo $form->textField($linea,'Precio'); ?>
+		<?php echo $form->error($linea,'Precio'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($linea,'Importe'); ?>
+		<?php echo $form->textField($linea,'Importe'); ?>
+		<?php echo $form->error($linea,'Importe'); ?>
+		<?php echo $linea->Precio*$linea->Cantidad.'-'.'Oie'; ?>
+	</div>
 
-                        $pedidoLinea->IdLibro = $producto['IdLibro'];
-                        $pedidoLinea->Precio = $producto['Precio'];
-                        $pedidoLinea->Cantidad = $producto['Cantidad'];
-                        $pedidoLinea->Importe = ($producto['Precio'] * $producto['Cantidad']);
-                        $pedidoLinea->IdPedido = $pedido->IdPedido;
-
-                        $pedidoLinea->save();
-                    }*/
+	<hr><hr>
+	*/
 	?>
 	
+    <div id="linea">
+        <?php
+        $index = 0;
+        foreach ($model->lineas as $id => $linea):
+            $this->renderPartial('linea/_form', array(
+                'model' => $linea,
+                'index' => $id,
+                'display' => 'block'
+            ));
+            $index++;
+        endforeach;
+		?>
+    </div>
+	
+	<?php
+		//echo CHtml::link('Añadir libro', '#', array('IdLinea' => 'loadChildByAjax'));
+    ?>
+	</br></br>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
+<?php //echo CHtml::endForm(); ?>
 
 </div><!-- form -->
+
+<?php
+Yii::app()->clientScript->registerCoreScript('jquery');
+Yii::app()->clientScript->registerScript('loadchild', '
+var _index = ' . $index . ';
+$("#loadChildByAjax").click(function(e){
+    e.preventDefault();
+    var _url = "' . Yii::app()->controller->createUrl("loadChildByAjax", array("load_for" => $this->action->id)) . '&index="+_index;
+    $.ajax({
+        url: _url,
+        success:function(response){
+            $("#linea").append(response);
+            $("#linea .crow").last().animate({
+                opacity : 1,
+                left: "+50",
+                height: "toggle"
+            });
+        }
+    });
+    _index++;
+});
+', CClientScript::POS_END);
+?>

@@ -11,13 +11,14 @@ $this->menu=array(
 	array('label'=>'Listar Pedidos', 'url'=>array('index')),
 	//array('label'=>'Create Pedido', 'url'=>array('create')),
 	array('label'=>'Modificar Pedido', 'url'=>array('update', 'id'=>$model->IdPedido)),
-	array('label'=>'Borrar Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdPedido),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Borrar Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->IdPedido),'confirm'=>'¿Está seguro que desea borrar este elemento?')),
 	array('label'=>'Gestionar Pedidos', 'url'=>array('admin')),
 );
 ?>
 
 <h1>Pedido nº <?php echo $model->IdPedido.'-'.$model->Serie.'-'.$model->Numero; 
-$gastos=$model->GastosEnvio?></h1>
+$gastos=$model->GastosEnvio;
+if($model->Pagado==0){$pago='Pedido pendiente de pago';}else{$pago='Pedido pagado';}?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -36,10 +37,13 @@ $gastos=$model->GastosEnvio?></h1>
 		),
 		'IVA',
 		'GastosEnvio',
-		'Pagado',
+		array(
+			'label'=>'Estado del envío',
+			'value'=> $model->estado->Nombre, 
+		),
 		array(
 			'label'=>'Estado del pedido',
-			'value'=>  $model->estado->Nombre,
+			'value'=> $pago,
 		),
 		'DomicilioEnvio',
 		'CPEnvio',

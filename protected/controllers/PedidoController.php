@@ -28,7 +28,7 @@ class PedidoController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','update','admin','delete','carrito','datos'),
+				'actions'=>array('index','view','create','update','admin','delete','carrito','datos','loadChildByAjax'),
 				'roles'=>array('admin','gerente','libreria','sysadmin','vendedor','cliente'),
 			),/*
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -84,22 +84,68 @@ class PedidoController extends Controller
 	public function actionCreate()
 	{
 		$model=new Pedido;
+		//$linea=new Linea;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
+		//$this->performAjaxValidation(array($model,$linea));
+		/*
+        if(isset($_POST['Pedido'],$_POST['Linea']))
+        {
+            $model->attributes=$_POST['Pedido'];
+            $linea->attributes=$_POST['Linea'];
 
+			$valid=$model->validate();
+			$valid=$linea->validate() && $valid;
+			
+			if($valid)
+			{
+				$model->save();
+				$linea->save();
+				$this->redirected(array('view','id'=>$model->IdPedido));
+			}
+			
+            if($model->validate()){
+                $model->save();
+            }
+            if($linea->validate()){
+                $linea->IdPedido = $model->IdPedido;
+                $linea->save();
+            }
+
+            if($model->validate() && $linea->validate()){
+				$this->redirected(array('view','id'=>$model->IdPedido));
+            }
+
+		}
+		}
+        $this->render('create',array(
+            'model'=>$model,
+            'linea'=>$linea,
+        ));
+	}		
+		*/
 		if(isset($_POST['Pedido']))
 		{
 			$model->attributes=$_POST['Pedido'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->IdPedido));
-		}
+			if (isset($_POST['Linea']))
+            {
+                $model->lineas = $_POST['Linea'];
+            }
+            if ($model->saveWithRelated('lineas'))
+                $this->redirect(array('view', 'id' => $model->IdPedido));
+            else
+                $model->addError('lineas', 'Error occured while saving linea.');
+        }
+			
+			
+			/*if($model->save())	$this->redirect(array('view','id'=>$model->IdPedido));*/
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		
 	}
-
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -115,10 +161,21 @@ class PedidoController extends Controller
 		if(isset($_POST['Pedido']))
 		{
 			$model->attributes=$_POST['Pedido'];
-			if($model->save())
+			if (isset($_POST['Linea']))
+            {
+                $model->lineas = $_POST['Linea'];
+            }
+            if ($model->saveWithRelated('lineas'))
+                $this->redirect(array('view', 'id' => $model->IdPedido));
+            else
+                $model->addError('lineas', 'Error occured while saving linea.');
+        }
+			
+			
+			/*if($model->save())
 				$this->redirect(array('view','id'=>$model->IdPedido));
-		}
-
+			*/
+		
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -289,4 +346,14 @@ class PedidoController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	public function actionLoadChildByAjax($index)
+    {
+        $model = new Linea;
+        $this->renderPartial('linea/_form', array(
+            'model' => $model,
+            'index' => $index,
+            'display' => 'block',
+        ), false, true);
+    }
 }

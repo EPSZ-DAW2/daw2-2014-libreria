@@ -5,10 +5,12 @@
 $this->breadcrumbs=array(
 	'Autores',
 );
+if(!Yii::app()->user->isGuest){
 $this->menu=array(
 	array('label'=>'Crear Autor', 'url'=>array('create'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 	array('label'=>'Gestionar Autores', 'url'=>array('admin'), 'visible'=>!Yii::app()->user->checkAccess('cliente')),
 );
+}
 ?>
 
 

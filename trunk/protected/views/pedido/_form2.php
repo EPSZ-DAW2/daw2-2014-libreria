@@ -9,18 +9,21 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'pedido-form',
+	'focus'=> array($model,'IdPedido'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note"><span class="required">*</span>Campos obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<h2>Cliente: <?php echo $model->usuario->Nombre.' '.$model->usuario->Apellidos;?></h2>
+	<h2>Cliente: <?php echo $model->usuario->Nombre.' '.$model->usuario->Apellidos;?></h2></br>
+	<h3>Fecha del pedido: <?php echo $model->Fecha;?></h3>
 	<hr>
 	<div class="row">
 		<?php echo $form->labelEx($model,'Forma Pago'); ?>
@@ -61,7 +64,7 @@
 		<?php echo $form->error($model,'TelefonoEnvio'); ?>
 	</div>
 	<hr><h2>Libros del Pedido</h2><hr>
-	<?php $lineas = $model->lineas;  
+	<?php /*$lineas = $model->lineas;  
 	foreach($lineas as $pedidoL) {?>
 	<div class="row">
 		<?php echo $form->labelEx($pedidoL,'Titulo'); ?>
@@ -106,6 +109,20 @@
                         $pedidoLinea->save();
                     }*/
 	?>
+	
+	    <div id="linea">
+        <?php
+        $index = 0;
+        foreach ($model->lineas as $id => $linea):
+            $this->renderPartial('linea/_form', array(
+                'model' => $linea,
+                'index' => $id,
+                'display' => 'block'
+            ));
+            $index++;
+        endforeach;
+		?>
+    </div>
 	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
